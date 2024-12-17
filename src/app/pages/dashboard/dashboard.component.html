@@ -1,0 +1,181 @@
+<app-topbar></app-topbar>
+<br> <br>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div *ngFor="let img of getAllImagesValue; let i = index" class="carousel-item" [class.active]="i === 0"
+      data-bs-interval="3000">
+      <img [src]="img.image" class="d-block w-100" alt="Slide {{ i + 1 }}">
+    </div>
+  </div>
+
+  <div class="carousel-indicators">
+    <button *ngFor="let img of getAllImagesValue; let i = index" type="button"
+      [attr.data-bs-target]="'#carouselExampleInterval'" [attr.data-bs-slide-to]="i" [class.active]="i === 0"
+      [attr.aria-label]="'Slide ' + (i + 1)">
+    </button>
+
+  </div>
+</div>
+<div class="sellers">
+  Best Sellers
+</div>
+
+<div class="container text-center my-5">
+  <ngb-carousel *ngIf="carouselItems.length > 0">
+    <ng-template ngbSlide *ngFor="let slide of carouselItems; let i = index">
+      <div class="row justify-content-center">
+        <div class="col-6 col-md-3 mb-4" *ngFor="let product of slide">
+          <div class="card border-0 shadow-sm w-100">
+            <div class="card-img-top overflow-hidden position-relative">
+              <img [src]="product.product_image" alt="{{product.name}}" class="img-fluid default-image" />
+              <img [src]="product.product_image" alt="Hover Image"
+                class="img-fluid hover-image position-absolute top-0 start-0 w-100" />
+            </div>
+            <div class="card-body">
+              <p class="product-name mt-2">{{ product.product_name }}</p>
+              Price<p class="product-price">{{ product.product_price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+
+<div class="image-container">
+  <img src="assets/IMG_8370_jpg.webp" alt="">
+  <button class="button">Click Me</button>
+</div>
+<div class="sellers">
+  NEW ARRIVALS
+</div>
+
+<div class="container text-center my-5">
+  <ngb-carousel *ngIf="carouselItems.length > 0">
+    <ng-template ngbSlide *ngFor="let slide of carouselItems; let i = index">
+      <div class="row justify-content-center">
+        <div class="col-6 col-md-3 mb-4" *ngFor="let product of slide">
+          <div class="card border-0 shadow-sm w-100">
+            <div class="card-img-top overflow-hidden position-relative">
+              <img [src]="product.product_image" alt="{{product.name}}" class="img-fluid default-image" />
+              <img [src]="product.product_image" alt="Hover Image"
+                class="img-fluid hover-image position-absolute top-0 start-0 w-100" />
+            </div>
+            <div class="card-body">
+              <p class="product-name mt-2">{{ product.product_name }}</p>
+              Price<p class="product-price">{{ product.product_price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+<nav class="navbar navbar-dark d-flex justify-content-center align-items-center"><button
+    style="color: #660825; font-weight: 300; font-family: serif;" href="#" class="button" style="--clr: #7808d0">
+    <span class="button__icon-wrapper">
+      <svg viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="button__icon-svg" width="10">
+        <path
+          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+          fill="currentColor"></path>
+      </svg>
+
+      <svg viewBox="0 0 14 15" fill="none" width="10" xmlns="http://www.w3.org/2000/svg"
+        class="button__icon-svg button__icon-svg--copy">
+        <path
+          d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+          fill="currentColor"></path>
+      </svg>
+    </span>
+    View All
+  </button>
+</nav>
+<div class="sellers">
+  SHOP BY STYLE
+</div>
+<div class="container my-5">
+  <div class="row g-4">
+    <!-- Card 1 -->
+    <div class="col-md-3">
+      <div class="card">
+        <img src="assets/1.jpg" class="card-img-top" alt="Card 1 Image">
+      </div>
+      <div class="navbar navbar-dark d-flex justify-content-center align-items-center">
+        <div style="color: #ea0d0d; font-weight: 300; font-family: serif;" (click)="shopAll()">STACKABLE</div>
+        <span style="color: #d60808; margin-left: 10px;">
+          <i class="fa fa-arrow-right"></i>
+        </span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3">
+      <div class="card">
+        <img src="assets/3.webp" class="card-img-top" alt="Card 2 Image">
+      </div>
+      <div class="navbar navbar-dark d-flex justify-content-center align-items-center">
+        <div style="color: #ea0d0d; font-weight: 300; font-family: serif;" (click)="shopAll()">CHARM NECKLACES</div>
+        <span style="color: #d60808; margin-left: 10px;">
+          <i class="fa fa-arrow-right"></i>
+        </span>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-3">
+      <div class="card">
+        <img src="assets/2.webp" class="card-img-top" alt="Card 3 Image">
+      </div>
+      <div class="navbar navbar-dark d-flex justify-content-center align-items-center">
+        <div style="color: #ea0d0d; font-weight: 300; font-family: serif;" (click)="shopAll()">BRACELETS</div>
+        <span style="color: #d60808; margin-left: 10px;">
+          <i class="fa fa-arrow-right"></i>
+        </span>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-3">
+      <div class="card">
+        <img src="assets/4.webp" class="card-img-top" alt="Card 4 Image">
+      </div>
+      <div class="navbar navbar-dark d-flex justify-content-center align-items-center">
+        <div style="color: #ea0d0d; font-weight: 300; font-family: serif;" (click)="shopAll()">SILVER JEWELRY</div>
+        <span style="color: #d60808; margin-left: 10px;">
+          <i class="fa fa-arrow-right"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-dark d-flex justify-content-center align-items-center"
+    style="background-color: #660825; padding: 20px 0;">
+    <span
+        style="color: #e6e6e4; font-weight: 300; font-family: serif; font-size: 1.2rem; line-height: 1.5; display: block; margin-bottom: 10px;">
+        SUBSCRIBE TO OUR NEWSLETTER
+    </span>
+</nav>
+<div class="navbar navbar-dark d-flex justify-content-center align-items-center"
+    style="background-color: #660825; padding: 20px 0;">
+    <button class="swallow__icon" style="position: relative; top: -40px;">
+        <span></span>
+    </button>
+</div>
+
+<div class="navbar navbar-dark d-flex justify-content-center align-items-center"
+    style="background-color: #660825;">
+    <div
+        style="color: #e6e6e4; font-weight: 300; font-family: serif; font-size: 1rem; line-height: 1.5; display: block; position: relative; top: -60px;">
+        Receive an exclusive discount and be the very first to know about our newest collections!
+    </div>
+</div>
+<div class="navbar navbar-dark d-flex justify-content-center align-items-center"
+    style="background-color: #660825;">
+    <input type="email" style="position: relative; bottom: 30px;" id="email-id" name="email-id" class="input__email"
+        placeholder="Email Address" required="">
+        <div class="box" style="bottom: 30px;">
+          <div class="arrow right"></div>
+          <div class="text">Send</div>
+        </div>
+</div>
+<app-footer></app-footer>

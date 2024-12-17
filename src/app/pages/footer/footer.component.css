@@ -1,0 +1,146 @@
+.sellers {
+    margin-top: 40px;
+    /* Centering the container to the right */
+    margin-left: auto;
+    margin-right: 0;
+    /* Ensures it aligns to the right side */
+    font-size: 16px;
+    /* Adjusted for better responsiveness */
+    font-family: 'Roboto Slab', serif;
+    color: #660825;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* Aligns the content to the right */
+}
+
+.sellers .container {
+    padding: 0 15px;
+}
+
+.sellers .row {
+    display: flex;
+    justify-content: flex-start;
+    /* Aligns left and right sections */
+    align-items: flex-start;
+    width: 100%;
+}
+
+.sellers ul {
+    padding: 0;
+    margin: 0;
+}
+
+.sellers a {
+    color: #660825;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.sellers a:hover {
+    color: #e87599;
+}
+
+.sellers .icons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+
+}
+
+.sellers .icons i {
+    color: #ff0000;
+    font-size: 24px;
+}
+
+@media (max-width: 768px) {
+    .sellers .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sellers .col-md-6 {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .sellers .icons {
+        justify-content: center;
+        /* Center icons on smaller screens */
+    }
+
+    .sellers .icons i {
+        font-size: 28px;
+    }
+}
+
+.container {
+    max-width: 1200px; /* Adjust based on your design */
+}
+
+.content {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for the content section */
+}
+
+.content-title {
+    font-size: 1.5rem;
+    color: #660825;
+    font-weight: 600;
+}
+
+.content-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.payment-options {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f8f9fa; /* Light background for payment section */
+}
+
+.payment-title {
+    font-size: 1.5rem;
+    color: #660825;
+    font-weight: 600;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Centers the icons in the right section */
+}
+
+.payment-icon {
+    width: 50px; /* Size of the payment icons */
+    height: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .col-md-8, .col-md-4 {
+        flex: 0 0 100%; /* Stack the content and payment options on smaller screens */
+    }
+
+    .payment-icons {
+        justify-content: space-around; /* Adjust for smaller screen sizes */
+    }
+}
+.footer {
+    background-color: #ffffff; /* Dark background color */
+    color: #000000; /* Light text color */
+    padding: 20px 0; /* Padding for spacing */
+    bottom: 0;
+    width: 100%; /* Full width */
+    text-align: center; /* Center align text */
+    font-family: 'Roboto', sans-serif; /* Choose a clean font */
+    font-size: 1rem; /* Adjust text size */
+}
+
+.footer p {
+    margin: 0;
+}

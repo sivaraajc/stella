@@ -1,0 +1,56 @@
+<nav class="navbar navbar-dark d-flex justify-content-center align-items-center" style="background-color: #660825;">
+    <div class="icons">
+        <i class="fab fa-instagram fa-2x"></i>
+        <i class="fab fa-tiktok fa-2x"></i>
+        <i class="fab fa-pinterest fa-2x"></i>
+    </div>
+    <span style="color: #e6e6e4; font-weight: 300; font-family: serif;">SHOP ALL</span>
+    <span style="color: #e0e0db; margin-left: 10px;">
+        <i class="fa fa-arrow-right"></i>
+    </span>
+</nav>
+
+
+<div class="searchBox" *ngIf="searchButtons">
+    <input type="text" placeholder="Search" [(ngModel)]="searchText" (ngModelChange)="searchTextChange()">
+</div>
+
+<div class="header-container d-flex justify-content-between align-items-center">
+    <div class="search">
+        <i class="fas fa-search fa-2x" (click)="searchButton()"></i>
+    </div>
+    <div class="header-container d-flex justify-content-between align-items-center">
+        <div class="company">
+            <h2
+                style="font-style: italic; color: #660825; font-size: 36px; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+                THEESTELLA
+            </h2>
+        </div>
+        <div class="country-info">
+            <span style="font-size: 16px; color: #660825;">India | INR $</span>
+        </div>
+    </div>
+</div>
+
+<div class="listMenu">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link">SHOP ALL</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">NECKLACES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">BRACELETS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" tabindex="-1">EARRINGS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">CUSTOM</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link">GIFT CARDS</a>
+        </li>
+    </ul>
+</div>

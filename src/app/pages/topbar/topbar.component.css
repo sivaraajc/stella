@@ -1,0 +1,210 @@
+.navbar {
+    position: relative;
+}
+
+.icons {
+    color: #e6e6e4;
+    font-size: 8px;
+    display: flex;
+    gap: 17px;
+    position: absolute;
+    left: 10px;
+    margin-left: 360px;
+}
+
+.search {
+    color: #994061;
+    font-size: 10px;
+    margin-top: 40px;
+    margin-left: 380px;
+}
+
+.company h2 {
+    font-size: 24px;
+    margin: 0;
+    text-align: left;
+    /* Align text to the left */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .icons {
+        left: 0;
+        margin-left: 20px;
+        font-size: 14px;
+        /* Increase font size for smaller devices */
+    }
+
+    .search {
+        margin-left: 20px;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .company h2 {
+        font-size: 20px;
+        /* Smaller font size on smaller screens */
+        margin-right: 0;
+        /* Remove the margin-right */
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        /* Center all elements in a column */
+    }
+
+    .icons {
+        margin-left: 0;
+        /* Reset margin */
+    }
+
+    .company h2 {
+        font-size: 18px;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .icons {
+        font-size: 10px;
+        /* Reduce icon size even more for smaller screens */
+        gap: 10px;
+        /* Reduce the gap between icons */
+    }
+
+    .search i {
+        font-size: 18px;
+        /* Adjust search icon size */
+    }
+
+    .company h2 {
+        font-size: 16px;
+        /* Smaller text for very small screens */
+    }
+}
+
+/* Custom margin-right for company text (for larger screens) */
+.company {
+    font-family: 'Roboto Slab', serif;
+    margin-right: 730px;
+    margin-top: 28px;
+    /* Set margin-right as you requested */
+}
+
+.country-info {
+    font-size: 16px;
+    color: #660825;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    .company h2 {
+        font-size: 28px; /* Adjust font size on smaller screens */
+        text-align: center;
+    }
+
+    .country-info {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: center; /* Center content on smaller screens */
+    }
+
+    .company {
+        margin-bottom: 10px; /* Add spacing between company name and country info */
+    }
+}
+
+@media (max-width: 480px) {
+    .company h2 {
+        font-size: 22px; /* Further reduce font size for very small screens */
+    }
+
+    .country-info {
+        font-size: 12px; /* Adjust country info size for very small screens */
+    }
+}
+/* Style for navigation items */
+.nav-item {
+    color: #660825; /* Main text color */
+    font-size: 16px; /* Adjust font size */
+    margin: 0 25px; /* Increased space between nav items */
+    text-align: center; /* Centers text */
+}
+
+/* Style for the links */
+.nav-link {
+    color: #660825; /* Default text color */
+    text-decoration: none; /* Remove underline */
+    padding: 12px 20px; /* Increase padding for better clickable area */
+    font-weight: 300; /* Light text weight */
+    font-family: 'Roboto', sans-serif; /* Clean sans-serif font */
+    text-transform: capitalize; /* Capitalize first letter */
+    border-radius: 8px; /* Rounded corners for links */
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover effect */
+.nav-link:hover {
+    background-color: #f8e4e4; /* Soft pink background on hover */
+    color: #660825; /* Keep text color */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+
+/* Active link style */
+.nav-link.active {
+    color: #fff; /* White text for active link */
+    background-color: #660825; /* Dark background for active link */
+    border-radius: 8px;
+}
+
+/* Disabled link style */
+.nav-link.disabled {
+    color: #ccc; /* Disabled link color */
+}
+
+/* Container styling */
+.listMenu {
+    margin-top: 30px; /* Adds space above the menu */
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+    .nav-item {
+        font-size: 14px; /* Adjust font size for smaller screens */
+        margin: 0 15px; /* Reduce space between nav items */
+    }
+
+    .nav-link {
+        padding: 8px 14px; /* Adjust padding for smaller screens */
+    }
+}
+
+/* For very small screens, e.g., mobile */
+@media (max-width: 480px) {
+    .nav-item {
+        font-size: 12px; /* Smaller font size for very small screens */
+        margin: 0 10px; /* Reduce space even more between nav items */
+    }
+
+    .nav-link {
+        padding: 6px 10px; /* Further reduce padding for very small screens */
+    }
+}
+
