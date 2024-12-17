@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { Page404Component } from './page404/page404.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbCarouselModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
