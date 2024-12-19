@@ -66,7 +66,9 @@ export class DashboardComponent {
   }
 
   confirmLogout() {
+    localStorage.removeItem('email');
     this.showLogoutDialog = false;
+    this.router.navigate(['/']);
     console.log('User logged out');
   }
 

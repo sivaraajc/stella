@@ -1,75 +1,68 @@
 <section class="banner-container">
-    <div class="banner-content">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/75dc2234eeadf838b2ea24af22388d1b7ed651363b456d0d3add0edee9829440?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-        class="banner-logo"
-        alt="Shop banner logo"
-      />
-      <div class="shop-link-container">
-        <span class="shop-link-text" tabindex="0" role="button">SHOP ALL</span>
-        <img
-          loading="lazy"
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1e1582418eadac67c7014f321ff13d90dabde35a4991a509a072147dd5eeae7?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-          class="shop-link-icon"
-          alt=""
-        />
-      </div>
+  <div class="banner-content">
+    <img loading="lazy"
+      src="https://cdn.builder.io/api/v1/image/assets/TEMP/75dc2234eeadf838b2ea24af22388d1b7ed651363b456d0d3add0edee9829440?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+      class="banner-logo" alt="Shop banner logo" />
+    <div class="shop-link-container">
+      <span class="shopall" role="button">SHOPALL</span>
+      <img loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1e1582418eadac67c7014f321ff13d90dabde35a4991a509a072147dd5eeae7?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+        class="shop-link-icon" alt="" />
     </div>
-  </section>
-  
-  <header class="header">
-    <nav class="navigation">
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/440d74c0c4fa6da6e7ba03358f383a2a3572de47703a4756b97429c721979030?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-        class="brand-logo"
-        alt="Company brand logo"
-      />
-      <div class="nav-content">
-        <div class="menu-container">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/acd2dda46f3f0ecd28a29befc954e7da8e200dca043660b7ed73b64bf834ade9?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-            class="menu-logo"
-            alt="Menu navigation logo"
-          />
+  </div>
+</section>
+
+<div class="navbar-right">
+  <div class="profile">
+    <span [routerLink]="'/auth/auth/'">LOGIN</span>
+    <img [src]="profileImage" alt="Profile" class="profile-icon" (click)="onLogin()" />
+  </div>
+</div>
+<div *ngIf="isSearchVisible" class="search-container">
+  <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." class="search-input" />
+</div>
+
+<header class="header">
+  <nav class="navigation">
+    <div class="d-flex justify-content-center align-items-center my-3">
+      <img loading="lazy"
+           src="https://cdn.builder.io/api/v1/image/assets/TEMP/440d74c0c4fa6da6e7ba03358f383a2a3572de47703a4756b97429c721979030?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+           class="brand-logo me-3" 
+           alt="Company brand logo" 
+           (click)="search()" />
+    </div>
+    
+    
+    <div class="nav-content">
+      <div class="menu-container">
+        <!-- <img loading="lazy"
+          src="/assets/prodcutname.png"
+          class="menu-logo" alt="Menu navigation logo"   /> -->
+          <br><br><br>
           <nav class="menu-items" role="navigation">
-            <button class="nav-link" tabindex="0">SHOP ALL</button>
+            <div *ngFor="let val of categoryList">
+              <button class="nav-link" tabindex="0" (click)="navigateToCategory(val.id)">{{ val.category_name }}</button>
+            </div>            
             <div class="nav-item-wrapper">
-              <button class="nav-link" tabindex="0">NECKLACES</button>
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd5d2ff32943ce77c547093fbe3df95fd1317c3491c5bdb3ca88ff2c136801b3?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-                class="dropdown-icon"
-                alt=""
-              />
             </div>
             <div class="secondary-nav">
-              <button class="nav-link active" tabindex="0">BRACELETS</button>
-              <button class="nav-link" tabindex="0">EARRINGS</button>
-              <button class="nav-link compact" tabindex="0">CUSTOMS</button>
-              <button class="nav-link" tabindex="0">GIFT CARDS</button>
+              
+            <!-- <button class="nav-link active" tabindex="0" (click)="Bracelets()">BRACELETS</button>
+            <button class="nav-link" tabindex="0" (click)="earrings()">EARRINGS</button>
+            <button class="nav-link compact" tabindex="0" (click)="customs()">CUSTOMS</button>
+            <button class="nav-link" tabindex="0" (click)="gift()">GIFT CARDS</button> -->
             </div>
           </nav>
-        </div>
-        <div class="region-selector">
-          <span class="region-text">United Kingdom | GBP £</span>
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/1475905d062e589ed16d77c3fa7255a7f0f2e784d16a044efc3600bbee486d6d?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-            class="region-icon"
-            alt=""
-          />
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/d538da5c1eb30eb88692acbcf857785ded21f68559d7548a658cf020e06c0f56?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-            class="cart-icon"
-            alt="Shopping cart"
-          />
-        </div>
       </div>
-    </nav>
-  </header>
-  
-  
+      <div class="region-selector">
+        <span class="region-text">India | INR $</span>
+        <img loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/1475905d062e589ed16d77c3fa7255a7f0f2e784d16a044efc3600bbee486d6d?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+          class="region-icon" alt="" />
+        <img loading="lazy"
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/d538da5c1eb30eb88692acbcf857785ded21f68559d7548a658cf020e06c0f56?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+          class="cart-icon" alt="Shopping cart" />
+      </div>
+    </div>
+  </nav>
+</header>

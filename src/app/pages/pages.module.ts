@@ -7,13 +7,15 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { AllcategoryproductComponent } from './allcategoryproduct/allcategoryproduct.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     TopbarComponent,
-    FooterComponent
+    FooterComponent,
+    AllcategoryproductComponent
   ],
   imports: [
     CommonModule,

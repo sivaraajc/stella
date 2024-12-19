@@ -1,89 +1,94 @@
 .stretch-card>.card {
-    width: 100%;
-    min-width: 100%
+  width: 100%;
+  min-width: 100%
 }
 
 body {
-    background-color: #f9f9fa
+  background-color: #f9f9fa
 }
 
 .flex {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto
 }
 
 @media (max-width:991.98px) {
-    .padding {
-        padding: 1.5rem
-    }
+  .padding {
+    padding: 1.5rem
+  }
 }
 
 @media (max-width:767.98px) {
-    .padding {
-        padding: 1rem
-    }
+  .padding {
+    padding: 1rem
+  }
 }
 
 .padding {
-    padding: 3rem
+  padding: 3rem
 }
 
 .card .card-title {
-    color: #000000;
-    margin-bottom: 0.625rem;
-    text-transform: capitalize;
-    font-size: 0.875rem;
-    font-weight: 500
+  color: #000000;
+  margin-bottom: 0.625rem;
+  text-transform: capitalize;
+  font-size: 0.875rem;
+  font-weight: 500
 }
 
 .card .card-description {
-    margin-bottom: .875rem;
-    font-weight: 400;
-    color: #76838f
+  margin-bottom: .875rem;
+  font-weight: 400;
+  color: #76838f
 }
 
 .mainimage {
-    width: 100% !important
+  width: 100% !important
 }
 
 app-topbar {
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 
 .sellers {
-    margin-top: 60px;
-    /* Reduced margin-top to move it up */
-    margin-left: 390px;
-    font-size: 30px;
-    bottom: 60px;
-    font-family: 'Roboto Slab', serif;
-    color: #660825;
+  margin-top: 60px;
+  /* Reduced margin-top to move it up */
+  margin-left: 390px;
+  font-size: 30px;
+  bottom: 60px;
+  font-family: 'Roboto Slab', serif;
+  color: #660825;
 }
 
 
 .carousel-item {
   width: 100%;
-  height: 700px; /* Set a fixed height for the carousel item */
-  overflow: hidden; /* Hide any part of the image that overflows */
+  height: 700px;
+  /* Set a fixed height for the carousel item */
+  overflow: hidden;
+  /* Hide any part of the image that overflows */
 }
 
 .carousel-item img {
   width: 100%;
-  height: 100%; /* Ensure images fill the container */
-  object-fit: cover; /* Ensures images maintain aspect ratio without distortion */
+  height: 100%;
+  /* Ensure images fill the container */
+  object-fit: cover;
+  /* Ensures images maintain aspect ratio without distortion */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #333; /* Set color for previous/next arrows */
+  background-color: #333;
+  /* Set color for previous/next arrows */
 }
 
 .card {
@@ -113,22 +118,28 @@ app-topbar {
 .image-container {
   position: relative;
   width: 100%;
-  height: 700px; /* Matches the height of the image */
+  height: 700px;
+  /* Matches the height of the image */
   overflow: hidden;
 }
 
 .image-container img {
   width: 100%;
-  height: 100%; /* Ensures the image fills the container */
-  object-fit: cover; /* Keeps the aspect ratio without stretching */
+  height: 100%;
+  /* Ensures the image fills the container */
+  object-fit: cover;
+  /* Keeps the aspect ratio without stretching */
 }
 
 .image-container .button {
   position: absolute;
-  top: 20%; /* Center vertically */
-  left: 50%; /* Center horizontally */
+  top: 20%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
   margin-bottom: 50%;
-  transform: translate(-50%, -50%); /* Adjust to perfect center */
+  transform: translate(-50%, -50%);
+  /* Adjust to perfect center */
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -141,7 +152,7 @@ app-topbar {
 }
 
 
-/* From Uiverse.io by Creatlydev */ 
+/* From Uiverse.io by Creatlydev */
 .button {
   line-height: 1;
   text-decoration: none;
@@ -200,14 +211,17 @@ app-topbar {
 
 
 .card:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
-  transition: all 0.3s ease-in-out; /* Smooth transition */
+  transform: scale(1.05);
+  /* Slight zoom effect */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  /* Add shadow */
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition */
 }
 
 
 /* DASHBOARD FOOTER */
-/* From Uiverse.io by ArturCodeCraft */ 
+/* From Uiverse.io by ArturCodeCraft */
 /* <reset-style> ============================ */
 button {
   border: none;
@@ -217,6 +231,7 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
+
 /* <main-style> ============================ */
 .swallow__icon {
   width: 2rem;
@@ -224,7 +239,7 @@ button {
   padding: .25rem;
   background-color: rgb(29, 29, 31, .7);
   backdrop-filter: saturate(180%) blur(20px);
-  border: solid 1px rgba(66,66,69,0.7);
+  border: solid 1px rgba(66, 66, 69, 0.7);
   position: relative;
 }
 
@@ -235,7 +250,7 @@ button {
   top: calc(.25rem + .563rem - 1px);
   left: calc(.25rem - 1px);
   transition: transform 1s cubic-bezier(.86, 0, .07, 1),
-              transform-origin 1s cubic-bezier(.86, 0, .07, 1);
+    transform-origin 1s cubic-bezier(.86, 0, .07, 1);
 }
 
 .swallow__icon span:before,
@@ -247,7 +262,7 @@ button {
   position: absolute;
   bottom: 0;
   transition: transform 1s cubic-bezier(.86, 0, .07, 1),
-              transform-origin 1s cubic-bezier(.86, 0, .07, 1);
+    transform-origin 1s cubic-bezier(.86, 0, .07, 1);
 }
 
 .swallow__icon span:before {
@@ -278,7 +293,7 @@ button {
   transform: rotate(40deg);
 }
 
-/* From Uiverse.io by sabbircoder07 */ 
+/* From Uiverse.io by sabbircoder07 */
 .input__email {
   width: 20%;
   padding: 12px 18px;
@@ -302,7 +317,8 @@ button {
   border: none;
   transition: all .3s;
 }
-/* From Uiverse.io by AmIt-DasIT */ 
+
+/* From Uiverse.io by AmIt-DasIT */
 .box {
   width: 45px;
   height: 45px;
@@ -362,4 +378,14 @@ button {
 
 .box:active {
   background: linear-gradient(to right, rgb(38, 213, 38, 0.8), rgba(255, 255, 0, 0.8));
+}
+
+.menu-logo {
+  aspect-ratio: 5.15;
+  object-fit: contain;
+  width: 870px;
+  align-self: center;
+  margin-left: 550px;
+  margin-top: -260px;
+  position: inherit;
 }

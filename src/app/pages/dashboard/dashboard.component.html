@@ -1,5 +1,8 @@
 <app-topbar></app-topbar>
-<br> <br>
+<img loading="lazy"
+          src="/assets/product-removebg-preview.png"
+          class="menu-logo" alt="Menu navigation logo"   />
+<br><br>
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div *ngFor="let img of getAllImagesValue; let i = index" class="carousel-item" [class.active]="i === 0"
@@ -51,7 +54,7 @@
 </div>
 
 <div class="container text-center my-5">
-  <ngb-carousel *ngIf="carouselItems.length > 0">
+  <ngb-carousel *ngIf="carouselItems.length > 0" [interval]="3000" [pauseOnHover]="true" [wrap]="true">
     <ng-template ngbSlide *ngFor="let slide of carouselItems; let i = index">
       <div class="row justify-content-center">
         <div class="col-6 col-md-3 mb-4" *ngFor="let product of slide">
