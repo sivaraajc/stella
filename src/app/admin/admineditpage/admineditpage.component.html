@@ -1,0 +1,103 @@
+<div class="product-form-wrapper">
+    <h3>Product Details</h3>
+    <form [formGroup]="productEditForm" (ngSubmit)="onSubmit()">
+        <!-- Product Name -->
+        <div class="form-group">
+            <label for="productName">Product Name *</label>
+            <input type="text" id="productName" formControlName="productName" class="form-control"
+                placeholder="Enter product name" />
+            <div *ngIf="productEditForm.get('productName')?.touched && productEditForm.get('productName')?.invalid">
+                <small class="text-danger">Product Name is required.</small>
+            </div>
+        </div>
+
+        <!-- Product Price -->
+        <div class="form-group">
+            <label for="productPrice">Product Price *</label>
+            <input type="number" id="productPrice" formControlName="productPrice" class="form-control"
+                placeholder="Enter product price" />
+            <div *ngIf="productEditForm.get('productPrice')?.touched && productEditForm.get('productPrice')?.invalid">
+                <small class="text-danger">Product Price is required and must be greater than 0.</small>
+            </div>
+        </div>
+
+        <!-- Product Category -->
+        <div class="form-group">
+            <label for="productCategoryId">Product Category *</label>
+            <select id="productCategoryId" formControlName="productCategoryId" class="form-control">
+                <option value="" disabled selected>Select a category</option>
+                <option *ngFor="let category of categoriesList" [value]="category.id">
+                    {{ category.category_name }}
+                </option>
+            </select>
+            <div
+                *ngIf="productEditForm.get('productCategoryId')?.touched && productEditForm.get('productCategoryId')?.invalid">
+                <small class="text-danger">Category is required.</small>
+            </div>
+        </div>
+
+        <!-- Product Sub-Category -->
+        <!-- <div class="form-group">
+            <label for="productSubCategoryId">Product Sub-Category *</label>
+            <select id="productSubCategoryId" formControlName="productSubCategoryId" class="form-control">
+                <option value="" disabled selected>Select a sub-category</option>
+                <option *ngFor="let subCategory of subCategoriesList" [value]="subCategory.id">
+                    {{ subCategory.subcategory_name }}
+                </option>
+            </select>
+            <div
+                *ngIf="productEditForm.get('productSubCategoryId')?.touched && productEditForm.get('productSubCategoryId')?.invalid">
+                <small class="text-danger">Sub-Category is required.</small>
+            </div>
+        </div> -->
+
+        <!--Product Status-->
+        <div class="form-group">
+            <label for="productSubCategoryId">Product Status *</label>
+            <select
+              id="Product Status"
+              formControlName="ProductStatus"
+              class="form-control"
+            >
+              <option value="" disabled selected>Select Product Status</option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+            <div *ngIf="productEditForm.get('ProductStatus')?.touched && productEditForm.get('ProductStatus')?.invalid">
+              <small class="text-danger">ProductStatus is required.</small>
+            </div>
+          </div>
+
+
+
+        <!-- Product Code -->
+        <div class="form-group">
+            <label for="productCode">Product Code *</label>
+            <input type="text" id="productCode" formControlName="productCode" class="form-control"
+                placeholder="Enter product code" />
+            <div *ngIf="productEditForm.get('productCode')?.touched && productEditForm.get('productCode')?.invalid">
+                <small class="text-danger">Product Code is required.</small>
+            </div>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label for="imageInput">Upload Product Image *</label>
+            <input type="file" id="imageInput" class="form-control-file" (change)="onFileChange($event)" />
+        </div>
+
+        <!-- Image Preview -->
+        <div class="form-group">
+            <div class="image-container">
+                <img *ngIf="imagePreview || currentProductImage" [src]="imagePreview || currentProductImage"
+                    alt="Image Preview" class="img-preview" />
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+            <button type="submit" class="btn btn-primary" [disabled]="productEditForm.invalid">Submit</button>
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>

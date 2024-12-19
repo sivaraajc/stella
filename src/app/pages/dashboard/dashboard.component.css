@@ -48,7 +48,7 @@ body {
 }
 
 app-topbar {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;
@@ -69,20 +69,21 @@ app-topbar {
 }
 
 
-.carousel-item .row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.carousel-item {
+  width: 100%;
+  height: 700px; /* Set a fixed height for the carousel item */
+  overflow: hidden; /* Hide any part of the image that overflows */
 }
 
-.carousel-item .col-6 {
-  flex: 0 0 50%;
-  max-width: 50%;
+.carousel-item img {
+  width: 100%;
+  height: 100%; /* Ensure images fill the container */
+  object-fit: cover; /* Ensures images maintain aspect ratio without distortion */
 }
 
-.carousel-item .col-md-3 {
-  flex: 0 0 25%;
-  max-width: 25%;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #333; /* Set color for previous/next arrows */
 }
 
 .card {

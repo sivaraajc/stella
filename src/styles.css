@@ -1,2 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 @import url(./assets/customcss/topandfooter.css);
+/* Example custom styles for Toastr */
+.custom-swal-popup {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+  font-family: 'Inter', sans-serif;
+}
+
+.custom-swal-title {
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+}
+
+.custom-swal-icon {
+  font-size: 24px;
+  color: white;
+}
+
+.swal2-icon {
+  border: none !important;
+  font-size: 20px !important;
+}
+
+.swal2-popup {
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

@@ -5,7 +5,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -19,7 +19,8 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     PagesRoutingModule,
     FormsModule,
-    NgbCarouselModule
+    NgbCarouselModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

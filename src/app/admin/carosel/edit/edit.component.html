@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>Edit Image</h3>
+    <form (ngSubmit)="onSubmit()" #editForm="ngForm">
+      <!-- Image Section -->
+      <div class="form-group">
+        <label class="label">Image:</label>
+        <div class="image-container">
+          <img [src]="imagePreview || currentImage" alt="Image" class="img-preview" />
+        </div>
+      </div>
+  
+      <!-- File Input -->
+      <div class="form-group">
+        <label class="label" for="imageInput">Select New Image</label>
+        <input
+          type="file"
+          id="imageInput"
+          name="image"
+          accept="image/*"
+          class="file-input"
+          (change)="onFileChange($event)"
+          required
+        />
+      </div>
+  
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Update Image</button>
+        <button type="button" class="btn btn-secondary" [routerLink]="'/admin/carosel/caroseldashboard'">Cancel</button>
+      </div>
+    </form>
+  </div>
+  

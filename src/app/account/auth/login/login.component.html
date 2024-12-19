@@ -1,35 +1,50 @@
-HTML CSSResult Skip Results Iframe
-<div class="container">
-  <div class="screen">
-    <div class="screen__content">
-      <form class="login">
-        <div class="login__field">
-          <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="User name / Email">
-        </div>
-        <div class="login__field">
-          <i class="login__icon fas fa-lock"></i>
-          <input type="password" class="login__input" placeholder="Password">
-        </div>
-        <button class="button login__submit">
-          <span class="button__text">Log In Now</span>
-          <i class="button__icon fas fa-chevron-right"></i>
-        </button>       
-      </form>
-      <div class="social-login">
-        <h3>log in via</h3>
-        <div class="social-icons">
-          <a href="#" class="social-login__icon fab fa-instagram"></a>
-          <a href="#" class="social-login__icon fab fa-facebook"></a>
-          <a href="#" class="social-login__icon fab fa-twitter"></a>
-        </div>
-      </div>
+<body>
+  <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true">
+
+      <!-- Sign up Form -->
+      <div class="signup">
+        <form [formGroup]="registerForm" (ngSubmit)="onSignup()">
+            <label for="chk" aria-hidden="true">Sign up</label>
+    
+    
+            <!-- Email -->
+            <input type="email" class="form-control" formControlName="email" placeholder="Email" required>
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger">
+                Please enter a valid email
+            </div>
+    
+            <!-- Password -->
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
+                Password must be at least 6 characters long
+            </div>
+    
+            <button type="submit" [disabled]="registerForm.invalid">Sign up</button>
+        </form>
     </div>
-    <div class="screen__background">
-      <span class="screen__background__shape screen__background__shape4"></span>
-      <span class="screen__background__shape screen__background__shape3"></span>    
-      <span class="screen__background__shape screen__background__shape2"></span>
-      <span class="screen__background__shape screen__background__shape1"></span>
-    </div>    
+    
+
+      <!-- Login Form -->
+      <div class="login">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <label for="chk" aria-hidden="true">Login</label>
+
+              <!-- Email with required and email format validation -->
+              <input type="email" class="form-control" formControlName="email" placeholder="Email" required>
+              <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger">
+                  Please enter a valid email
+              </div>
+
+              <!-- Password with required validation -->
+              <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
+              <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                  class="text-danger">
+                  Password is required
+              </div>
+
+              <button type="submit" [disabled]="loginForm.invalid">Login</button>
+          </form>
+      </div>
   </div>
-</div>
+</body>
