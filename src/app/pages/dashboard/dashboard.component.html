@@ -19,12 +19,12 @@
 
   </div>
 </div>
-<div class="sellers">
-  Best Sellers
+<div class="text-center sellers">
+  <h2>Best Sellers</h2>
 </div>
 
 <div class="container text-center my-5">
-  <ngb-carousel *ngIf="carouselItems.length > 0">
+  <ngb-carousel *ngIf="carouselItems.length > 0" [interval]="3000" [pauseOnHover]="true" [wrap]="true">
     <ng-template ngbSlide *ngFor="let slide of carouselItems; let i = index">
       <div class="row justify-content-center">
         <div class="col-6 col-md-3 mb-4" *ngFor="let product of slide">
@@ -49,7 +49,7 @@
   <img src="assets/IMG_8370_jpg.webp" alt="">
   <button class="button">Click Me</button>
 </div>
-<div class="sellers">
+<div class="text-center sellers">
   NEW ARRIVALS
 </div>
 
@@ -93,7 +93,7 @@
     View All
   </button>
 </nav>
-<div class="sellers">
+<div class="text-center sellers">
   SHOP BY STYLE
 </div>
 <div class="container my-5">
@@ -152,28 +152,28 @@
   </div>
 </div>
 <nav class="navbar navbar-dark d-flex justify-content-center align-items-center"
-    style="background-color: #660825; padding: 20px 0;">
+    style="background-color: rgb(251, 159, 174); padding: 20px 0;">
     <span
         style="color: #e6e6e4; font-weight: 300; font-family: serif; font-size: 1.2rem; line-height: 1.5; display: block; margin-bottom: 10px;">
         SUBSCRIBE TO OUR NEWSLETTER
     </span>
 </nav>
 <div class="navbar navbar-dark d-flex justify-content-center align-items-center"
-    style="background-color: #660825; padding: 20px 0;">
+    style="background-color: rgb(251, 159, 174); padding: 20px 0;">
     <button class="swallow__icon" style="position: relative; top: -40px;">
         <span></span>
     </button>
 </div>
 
 <div class="navbar navbar-dark d-flex justify-content-center align-items-center"
-    style="background-color: #660825;">
+    style="background-color:rgb(251, 159, 174);">
     <div
         style="color: #e6e6e4; font-weight: 300; font-family: serif; font-size: 1rem; line-height: 1.5; display: block; position: relative; top: -60px;">
         Receive an exclusive discount and be the very first to know about our newest collections!
     </div>
 </div>
 <div class="navbar navbar-dark d-flex justify-content-center align-items-center"
-    style="background-color: #660825;">
+    style="background-color: rgb(251, 159, 174)">
     <input type="email" style="position: relative; bottom: 30px;" id="email-id" name="email-id" class="input__email"
         placeholder="Email Address" required="">
         <div class="box" style="bottom: 30px;">

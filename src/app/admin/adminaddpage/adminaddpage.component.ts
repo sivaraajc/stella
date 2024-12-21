@@ -22,7 +22,6 @@ export class AdminaddpageComponent implements OnInit {
       productName: ['', Validators.required],
       productPrice: [null, [Validators.required, Validators.min(1)]],
       productCategoryId: ['', Validators.required],
-      productSubCategoryId: ['', Validators.required],
       productCode: ['', Validators.required],
     });
   }
@@ -79,7 +78,7 @@ export class AdminaddpageComponent implements OnInit {
     const productName = encodeURIComponent(this.productForm.get('productName')?.value);
     const productPrice = encodeURIComponent(this.productForm.get('productPrice')?.value);
     const productCategoryId = encodeURIComponent(this.productForm.get('productCategoryId')?.value);
-    const productSubCategoryId = encodeURIComponent(this.productForm.get('productSubCategoryId')?.value);
+    const productSubCategoryId =4;
     const productCode = encodeURIComponent(this.productForm.get('productCode')?.value);
   
     const url = `/product/addproduct?productName=${productName}&productPrice=${productPrice}&productCategoryId=${productCategoryId}&productSubCategoryId=${productSubCategoryId}&productCode=${productCode}`;

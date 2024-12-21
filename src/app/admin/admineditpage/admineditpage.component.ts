@@ -25,7 +25,7 @@ export class AdmineditpageComponent {
       productName: ['', Validators.required],
       productPrice: [null, [Validators.required, Validators.min(1)]],
       productCategoryId: ['', Validators.required],
-      productSubCategoryId: ['', Validators.required],
+      // productSubCategoryId: ['', Validators.required],
       productCode: ['', Validators.required],
       ProductStatus: ['', Validators.required]
     });

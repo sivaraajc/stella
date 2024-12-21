@@ -1,30 +1,106 @@
+<!-- <app-topbar></app-topbar>
 <div class="app">
-    <header class="bg-white shadow-sm py-3">
-      <nav class="container d-flex justify-content-between align-items-center">
-        <div class="logo fs-4 fw-bold">Elegant Flair</div>
-        <ul class="nav">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+  <main class="container mt-5">
+    <h1 class="text-center mb-4 fw-bold text-primary">All Products</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Filter: Availability
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">In Stock</a></li>
+          <li><a class="dropdown-item" href="#">Out of Stock</a></li>
         </ul>
-      </nav>
-    </header>
-  
-    <main class="container mt-5">
-      <h1 class="text-center mb-4">Our Necklaces</h1>
-      <div class="row g-4">
-        <div class="col-md-3 col-sm-6" *ngFor="let product of productResponse">
-          <div class="card shadow-sm">
-            <img [src]="product.product_image" [alt]="product.name" class="card-img-top">
-            <div class="card-body text-center">
-              <h5 class="card-title">{{ product.product_name }}</h5>
-              <p class="card-text">{{ product.product_price }}</p>
-              <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
-            </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Sort by: Featured
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+          <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+        </ul>
+      </div>
+      <span class="text-muted">107 products</span>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of productResponse">
+        <div class="card border-0">
+          <img [src]="product.product_image" [alt]="product.product_name" class="card-img-top rounded">
+          <div class="card-body text-center">
+            <h6 class="card-title text-dark fw-bold">{{ product.product_name }}</h6>
+            <p class="card-text text-muted">Price: ${{ product.product_price }}</p>
+            <button class="btn btn-outline-primary w-100" (click)="addToCart(product)">Add to Cart</button>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
+</div> -->
+<app-topbar></app-topbar>
+<div class="container my-5">
+  <!-- Page Heading -->
+  <h1 class="text-center text-uppercase fw-bold mb-4">All Products</h1>
+
+  <!-- Filters and Sorting -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="dropdown">
+      <button
+        class="btn btn-outline-secondary dropdown-toggle"
+        type="button"
+        id="filterDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Filter: Availability
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+        <li><a class="dropdown-item" href="#">In Stock</a></li>
+        <li><a class="dropdown-item" href="#">Out of Stock</a></li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <button
+        class="btn btn-outline-secondary dropdown-toggle"
+        type="button"
+        id="sortDropdown"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Sort by: Featured
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+        <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+        <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+      </ul>
+    </div>
+    <p class="mb-0 text-muted">{{productResponse?.length}}</p>
   </div>
-  
+
+  <!-- Product Grid -->
+  <div class="row g-4">
+    <div
+      class="col-md-3 col-sm-6"
+      *ngFor="let product of productResponse"
+    >
+      <div class="card text-center border-0">
+        <img
+        [src]="product.product_image"
+          [alt]="product.product_name"
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h6 class="card-title fw-bold">{{ product.product_name }}</h6>
+          <p class="text-muted">{{ product.product_price | currency:'INR' }}</p>
+          <button
+            class="btn btn-outline-dark text-uppercase fw-bold"
+            (click)="addToCart(product)"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

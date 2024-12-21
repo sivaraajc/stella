@@ -41,6 +41,7 @@ this.getdata.commonData(req).subscribe((res:any)=>{
 }
 
 addToCart(val:any){
+console.log(val);
 
 }
 

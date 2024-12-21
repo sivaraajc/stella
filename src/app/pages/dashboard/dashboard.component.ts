@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
     this.slideImageCall();
     this.getAllImages();
   }
-
+styles:any;
   getAllImages() {
     this.getService.getData().subscribe(res => {
       if (res.statusCode === 0) {

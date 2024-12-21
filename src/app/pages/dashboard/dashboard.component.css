@@ -58,15 +58,7 @@ app-topbar {
 }
 
 
-.sellers {
-  margin-top: 60px;
-  /* Reduced margin-top to move it up */
-  margin-left: 390px;
-  font-size: 30px;
-  bottom: 60px;
-  font-family: 'Roboto Slab', serif;
-  color: #660825;
-}
+
 
 
 .carousel-item {
@@ -389,3 +381,11 @@ button {
   margin-top: -260px;
   position: inherit;
 }
+
+.sellers {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-family: 'Roboto Slab', serif;
+  color: #660825;
+}
+
