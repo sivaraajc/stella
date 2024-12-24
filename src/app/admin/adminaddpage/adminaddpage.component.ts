@@ -78,11 +78,12 @@ export class AdminaddpageComponent implements OnInit {
     const productName = encodeURIComponent(this.productForm.get('productName')?.value);
     const productPrice = encodeURIComponent(this.productForm.get('productPrice')?.value);
     const productCategoryId = encodeURIComponent(this.productForm.get('productCategoryId')?.value);
-    const productSubCategoryId =4;
+   // const productSubCategoryId =4;
     const productCode = encodeURIComponent(this.productForm.get('productCode')?.value);
   
-    const url = `/product/addproduct?productName=${productName}&productPrice=${productPrice}&productCategoryId=${productCategoryId}&productSubCategoryId=${productSubCategoryId}&productCode=${productCode}`;
-  
+    //const url = `/product/addproduct?productName=${productName}&productPrice=${productPrice}&productCategoryId=${productCategoryId}&productSubCategoryId=${productSubCategoryId}&productCode=${productCode}`;
+    const url = `/product/addproduct?productName=${productName}&productPrice=${productPrice}&productCategoryId=${productCategoryId}&productCode=${productCode}`;
+
     // Create FormData object to send the image
     const formData = new FormData();
     formData.append('image', this.selectedFile);

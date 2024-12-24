@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllcategoryproductComponent } from './allcategoryproduct/allcategoryproduct.component';
+import { ProductviewpageComponent } from './productviewpage/productviewpage.component';
+import { CollapseModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
@@ -15,14 +17,16 @@ import { AllcategoryproductComponent } from './allcategoryproduct/allcategorypro
     DashboardComponent,
     TopbarComponent,
     FooterComponent,
-    AllcategoryproductComponent
+    AllcategoryproductComponent,
+    ProductviewpageComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     FormsModule,
     NgbCarouselModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CollapseModule
   ]
 })
 export class PagesModule { }

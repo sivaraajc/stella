@@ -1,0 +1,72 @@
+<div class="container my-5">
+    <!-- Product Title -->
+    <div class="text-center mb-4">
+      <h1 class="product-title">Lucy Necklace</h1>
+      <p class="price">$135.00 USD</p>
+      <p class="shipping-info">Shipping calculated at checkout.</p>
+    </div>
+  
+    <!-- Main Section -->
+    <div class="row" >
+      <!-- Product Images Section -->
+       <ng-container *ngFor="let val of productResponse">
+      <div class="col-lg-6">
+        <div class="main-image mb-4">
+          <img [src]="val.product_image" class="img-fluid" alt="Lucy Necklace">
+        </div>
+        <div class="thumbnail-images d-flex gap-2">
+          <img [src]="val.product_image" class="img-thumbnail" alt="Thumbnail 1" (click)="nextView(val.id)">
+          <img [src]="val.product_image" class="img-thumbnail" alt="Thumbnail 2">
+        </div>
+      </div>
+    </ng-container>
+  
+      <!-- Product Details Section -->
+      <div class="col-lg-6">
+        <div class="mb-4">
+          <button class="btn btn-primary w-100 py-3 mb-3">Add to Cart</button>
+          <button class="btn btn-outline-primary w-100 py-3">Buy with ShopPay</button>
+        </div>
+        <div class="quantity-section mb-4">
+          <h5>Quantity</h5>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-outline-secondary">-</button>
+            <input type="number" class="form-control text-center mx-2" value="1" style="width: 60px;">
+            <button class="btn btn-outline-secondary">+</button>
+          </div>
+        </div>
+        <ul class="product-features">
+          <li>18K Gold-Plated Brass Hardware</li>
+          <li>Vintage Light Sapphire Cats Eye Beads</li>
+          <li>Handmade with love in Pittsburgh, PA</li>
+        </ul>
+        <div class="share-section mt-3">
+          <p>Share:</p>
+          <a href="#" class="me-3">Facebook</a>
+          <a href="#" class="me-3">Instagram</a>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Recommended Products Section -->
+    <div class="recommended-products mt-5">
+      <h4>You may also like</h4>
+      <div class="d-flex gap-3">
+        <div class="card" style="width: 18rem;">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="Recommended Product 1">
+          <div class="card-body text-center">
+            <h5 class="card-title">Product 1</h5>
+            <p class="price">$100.00 USD</p>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img src="https://via.placeholder.com/300" class="card-img-top" alt="Recommended Product 2">
+          <div class="card-body text-center">
+            <h5 class="card-title">Product 2</h5>
+            <p class="price">$120.00 USD</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

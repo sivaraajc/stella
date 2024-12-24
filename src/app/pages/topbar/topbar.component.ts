@@ -8,7 +8,10 @@ import { GetdataService } from 'src/service/getdata.service';
   styleUrls: ['./topbar.component.css']
 })
 export class TopbarComponent implements OnInit {
-  categoryList: any;
+  categoryList: any[] = [];
+  isSearchVisible = false;
+  profileImage: string = 'assets/dow.png';
+  hideTopbarFlag: boolean;
 
   constructor(private router: Router, private getData: GetdataService) { }
 
@@ -16,47 +19,50 @@ export class TopbarComponent implements OnInit {
     this.cateogryList();
   }
 
+
   cateogryList() {
     const req = {
       "dataCode": "GET_ALL_CATEGORY"
     }
     this.getData.commonData(req).subscribe((res: any) => {
       if (res.statusCode == 0) {
-        this.categoryList = res.responseContent;
+        setTimeout(() => {
+          this.categoryList = res.responseContent;
+        }, 500);
       }
       else {
+
+        this.categoryList = [];
         console.log("Error");
       }
     });
   }
 
 
-  profileImage: string = 'assets/dow.png';
-  searchText: string = '';
-  searchButtons: boolean = false;
-  searchButton() {
-    this.searchButtons = true;
-  }
-  searchTextChange() {
-
-  }
-
 
   onLogin() {
     this.router.navigate(['/auth/auth/']);
   }
-  isSearchVisible = false;
-  searchQuery = '';
-  search() {
-    console.log('search called');
-    this.isSearchVisible = !this.isSearchVisible;
-    if (this.isSearchVisible) {
-      this.searchQuery = '';
-    }
-  }
+
+
+
   navigateToCategory(categoryId: number): void {
     console.log('Navigating to category with ID:', categoryId);
-    this.router.navigate(['/allcatogery', categoryId]); // Navigating to the category route
+    this.router.navigate(['/allcatogery', categoryId]);
+  }
+  searchOpen() {
+    console.log("searchOpen");
+    this.isSearchVisible = !this.isSearchVisible;
+    this.hideTopbarFlag = true;
   }
 
+  clearSearch() {
+    this.isSearchVisible = false;
+    this.hideTopbarFlag = false;
+  }
+
+
+  authLogin() {
+    this.router.navigate(['/auth/auth/']);
+  }
 }

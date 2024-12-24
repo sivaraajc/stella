@@ -376,10 +376,9 @@ button {
   aspect-ratio: 5.15;
   object-fit: contain;
   width: 870px;
-  align-self: center;
-  margin-left: 550px;
-  margin-top: -260px;
-  position: inherit;
+  margin-right: 10%;
+  margin-left: -15%;
+  margin-top: -98px;
 }
 
 .sellers {
@@ -388,4 +387,5 @@ button {
   font-family: 'Roboto Slab', serif;
   color: #660825;
 }
+
 

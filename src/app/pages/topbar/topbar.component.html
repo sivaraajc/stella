@@ -11,8 +11,21 @@
     </div>
   </div>
 </section>
+<!-- <section class="banner">
+  <div class="banner-content"> -->
+<!-- <img loading="lazy"
+    src="https://storage.googleapis.com/datacode-87922.appspot.com/images/1734610835679-product-removebg-preview.png"
+    class="menu-logo" alt="Menu navigation logo" /> -->
+<!-- <div class="shop-link-container">
+      <span class="shopall" role="button">SHOPALL</span>
+      <img loading="lazy"
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/e1e1582418eadac67c7014f321ff13d90dabde35a4991a509a072147dd5eeae7?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+        class="shop-link-icon" alt="" />
+    </div> -->
+<!-- </div>
+</section> -->
 
-<div class="navbar-right">
+<!-- <div class="navbar-right">
   <div class="profile">
     <span [routerLink]="'/auth/auth/'">LOGIN</span>
     <img [src]="profileImage" alt="Profile" class="profile-icon" (click)="onLogin()" />
@@ -20,39 +33,37 @@
 </div>
 <div *ngIf="isSearchVisible" class="search-container">
   <input type="text" [(ngModel)]="searchQuery" placeholder="Search..." class="search-input" />
-</div>
+</div> -->
 
-<header class="header">
+<!-- <header class="header">
   <nav class="navigation">
     <div class="d-flex justify-content-center align-items-center my-3">
       <img loading="lazy"
-           src="https://cdn.builder.io/api/v1/image/assets/TEMP/440d74c0c4fa6da6e7ba03358f383a2a3572de47703a4756b97429c721979030?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
-           class="brand-logo me-3" 
-           alt="Company brand logo" 
-           (click)="search()" />
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/440d74c0c4fa6da6e7ba03358f383a2a3572de47703a4756b97429c721979030?placeholderIfAbsent=true&apiKey=f34275527d09412884d48cd96e9a3271"
+        class="brand-logo me-3" alt="Company brand logo" (click)="search()" />
     </div>
-    
-    
+
+
     <div class="nav-content">
       <div class="menu-container">
-        <!-- <img loading="lazy"
-          src="/assets/prodcutname.png"
-          class="menu-logo" alt="Menu navigation logo"   /> -->
-          <br><br><br>
-          <nav class="menu-items" role="navigation">
-            <div *ngFor="let val of categoryList">
-              <button class="nav-link" tabindex="0" (click)="navigateToCategory(val.id)">{{ val.category_name }}</button>
-            </div>            
-            <div class="nav-item-wrapper">
-            </div>
-            <div class="secondary-nav">
-              
-            <!-- <button class="nav-link active" tabindex="0" (click)="Bracelets()">BRACELETS</button>
-            <button class="nav-link" tabindex="0" (click)="earrings()">EARRINGS</button>
-            <button class="nav-link compact" tabindex="0" (click)="customs()">CUSTOMS</button>
-            <button class="nav-link" tabindex="0" (click)="gift()">GIFT CARDS</button> -->
-            </div>
-          </nav>
+        <br><br><br>
+        <nav class="menu-items" role="navigation">
+          <div *ngFor="let val of categoryList"> -->
+<!-- <button class="nav-link" tabindex="0" (click)="navigateToCategory(val.id)">{{ val.category_name }}</button> -->
+<!-- <button
+            class="nav-link"
+            tabindex="0"
+            (click)="navigateToCategory(val.id);refreshPage()"
+          >
+            {{ val.category_name }}
+          </button>
+          
+          </div>
+          <div class="nav-item-wrapper">
+          </div>
+          <div class="secondary-nav">
+          </div>
+        </nav>
       </div>
       <div class="region-selector">
         <span class="region-text">India | INR ₹</span>
@@ -65,4 +76,69 @@
       </div>
     </div>
   </nav>
-</header>
+</header> -->
+
+<nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-1">
+  <div class="container-fluid" *ngIf="!hideTopbarFlag">
+    <a class="navbar-brand" href="#" style="margin-left: 0;">
+      <img loading="lazy"
+        src="https://storage.googleapis.com/datacode-87922.appspot.com/images/1734610835679-product-removebg-preview.png"
+        class="menu-logo" alt="Menu navigation logo" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <div class="d-none d-lg-block custom-left">
+        <div class="input-group">
+          <span class="border-warning" style="color: lightcoral;cursor: pointer;">
+            <i class="fa-solid fa-magnifying-glass" (click)="searchOpen()"></i>
+          </span>
+        </div>
+      </div>
+      <ul class="navbar-nav ms-auto">
+        <ng-container *ngFor="let val of categoryList">
+          <li class="nav-item" *ngIf="val.category_name">
+            <a class="nav-link mx-2 text-uppercase" style="color: rgb(220, 114, 130);" (click)="navigateToCategory(val.id)">{{ val.category_name }}</a>
+          </li>
+        </ng-container>
+      </ul>
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" style="color: rgb(220, 114, 130);"><i
+              class="fa-solid fa-cart-shopping me-1"></i> Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" style="color: rgb(220, 114, 130);" (click)="authLogin()"><i
+              class="fa-solid fa-circle-user me-1"></i> Account</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container justify-content-center" *ngIf="isSearchVisible">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="input-group mb-3 custom-search-top  custom-pink-border">
+        <input type="text" class="form-control input-text" placeholder="Search products...."
+          aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-warning btn-lg custom-pink-border" type="button" (click)="clearSearch()">
+            <i class="fa fa-times"></i>
+          </button>
+          <button class="btn btn-outline-warning btn-lg custom-pink-border" type="button"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
