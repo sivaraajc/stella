@@ -1,3 +1,4 @@
+<app-topbar></app-topbar>
 <div class="container my-5">
     <!-- Product Title -->
     <div class="text-center mb-4">
@@ -9,7 +10,7 @@
     <!-- Main Section -->
     <div class="row" >
       <!-- Product Images Section -->
-       <ng-container *ngFor="let val of productResponse">
+       <!-- <ng-container *ngFor="let val of productResponse">
       <div class="col-lg-6">
         <div class="main-image mb-4">
           <img [src]="val.product_image" class="img-fluid" alt="Lucy Necklace">
@@ -19,8 +20,42 @@
           <img [src]="val.product_image" class="img-thumbnail" alt="Thumbnail 2">
         </div>
       </div>
-    </ng-container>
+    </ng-container> -->
   
+    <ng-container *ngFor="let val of productResponse">
+      <div class="col-lg-6">
+        <div class="main-image mb-4" style="position: relative;">
+          <img
+          [src]="val.product_image || 'https://via.placeholder.com/300'"
+          class="img-fluid main-img"
+          alt="Lucy Necklace"
+          (mousemove)="moveLens($event)"
+          (mouseleave)="hideLens()"
+          (mouseenter)="showLens($event)"
+        />
+        
+          <div
+            class="magnifier-lens"
+            #lens
+            style="position: absolute; display: none; width: 150px; height: 150px; border: 1px solid #000; background-repeat: no-repeat; background-size: 200%;"
+          ></div>
+        </div>
+        <div class="thumbnail-images d-flex gap-2">
+          <img
+            [src]="val.product_image"
+            class="img-thumbnail"
+            alt="Thumbnail 1"
+            (click)="nextView(val.id)"
+          />
+          <img
+            [src]="val.product_image"
+            class="img-thumbnail"
+            alt="Thumbnail 2"
+          />
+        </div>
+      </div>
+    </ng-container>
+    
       <!-- Product Details Section -->
       <div class="col-lg-6">
         <div class="mb-4">

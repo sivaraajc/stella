@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GetdataService } from 'src/service/getdata.service';
 
@@ -8,6 +8,8 @@ import { GetdataService } from 'src/service/getdata.service';
   styleUrls: ['./productviewpage.component.css']
 })
 export class ProductviewpageComponent implements OnInit {
+  @ViewChild('lens', { static: false }) lens!: ElementRef;
+
   imageId: any;
   productResponse: any;
 
@@ -19,6 +21,47 @@ export class ProductviewpageComponent implements OnInit {
     });
     this.productView();
   }
+
+
+
+  showLens(event: MouseEvent): void {
+    const lens = this.lens.nativeElement;
+    lens.style.display = 'block';
+    this.updateLens(event);
+  }
+
+  hideLens(): void {
+    const lens = this.lens.nativeElement;
+    lens.style.display = 'none';
+  }
+
+  moveLens(event: MouseEvent): void {
+    this.updateLens(event);
+  }
+
+  updateLens(event: MouseEvent): void {
+    const lens = this.lens.nativeElement;
+    const img = (event.target as HTMLImageElement);
+    const rect = img.getBoundingClientRect();
+
+    const lensWidth = lens.offsetWidth;
+    const lensHeight = lens.offsetHeight;
+
+    const x = event.clientX - rect.left - lensWidth / 2;
+    const y = event.clientY - rect.top - lensHeight / 2;
+
+    // Restrict lens within the image boundaries
+    lens.style.left = Math.max(0, Math.min(x, rect.width - lensWidth)) + 'px';
+    lens.style.top = Math.max(0, Math.min(y, rect.height - lensHeight)) + 'px';
+    lens.style.backgroundImage = `url(${img.src})`;
+    lens.style.backgroundPosition = `-${x * 2}px -${y * 2}px`;
+    lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
+  }
+
+  // nextView(productId: number): void {
+  //   console.log('Navigate to product:', productId);
+  // }
+
 
   productView() {
     const req = {

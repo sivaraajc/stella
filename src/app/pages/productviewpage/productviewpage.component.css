@@ -72,3 +72,22 @@ body {
     color: #a02744;
   }
   
+
+  .main-image {
+    position: relative;
+  }
+  
+  .main-img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .magnifier-lens {
+    display: none;
+    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-repeat: no-repeat;
+    z-index: 10;
+    border-radius: 50%;
+  }
+  
