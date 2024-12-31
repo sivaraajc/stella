@@ -182,8 +182,17 @@
       </ul>
       <ul class="navbar-nav ms-auto ">
         <li class="nav-item">
-          <a class="nav-link mx-2 text-uppercase" style="color: rgb(220, 114, 130);"><i
-              class="fa-solid fa-cart-shopping me-1"></i> Cart</a>
+          <!-- <a class="nav-link mx-2 text-uppercase" style="color: rgb(220, 114, 130);" (click)="addToCart()"><i
+              class="fa-solid fa-cart-shopping me-1"></i>Cart{{cartCounts}}</a>  -->
+              <a class="nav-link mx-2 text-uppercase position-relative" style="color: rgb(220, 114, 130);" (click)="addToCart()">
+                <i class="fa-solid fa-cart-shopping me-1"></i>
+                <span 
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ cartCounts }}
+                </span>
+                Cart
+              </a>
+              
         </li>
         <li class="nav-item">
           <a class="nav-link mx-2 text-uppercase" style="color: rgb(220, 114, 130);" (click)="authLogin()"><i

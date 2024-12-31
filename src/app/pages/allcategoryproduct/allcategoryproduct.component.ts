@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/service/alert.service';
 import { GetdataService } from 'src/service/getdata.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AllcategoryproductComponent {
   categoryId: any;  // Store the category ID from the route
   productResponse: any;  // Store the list of products
 
-  constructor(private route: ActivatedRoute, private getdata: GetdataService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private getdata: GetdataService, private router: Router,private alert:AlertService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -47,9 +48,18 @@ export class AllcategoryproductComponent {
     });
   }
 
-  addToCart(val: any) {
-    console.log(val);
-  }
+
+  cart: { id: number; name: string; price: number; image: string }[] = [];
+cartCount: number = 0;
+addToCart(id: number, name: string, price: number, image: string): void {
+  const product = { id, name, price, image };
+  console.log('Adding product to cart:', product);
+  this.cart.push(product);
+  localStorage.setItem('cart', JSON.stringify(this.cart));
+  this.cartCount = this.cart.length;
+  localStorage.setItem('cartCount', this.cartCount.toString());
+  this.alert.showCustomPopup('success', `${name} added to cart!`);
+}
 
   productView(number: any): any {
     console.log(number);

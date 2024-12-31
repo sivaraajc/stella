@@ -10,6 +10,7 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { AllcategoryproductComponent } from './allcategoryproduct/allcategoryproduct.component';
 import { ProductviewpageComponent } from './productviewpage/productviewpage.component';
 import { CollapseModule } from 'angular-bootstrap-md';
+import { AddToCardComponent } from './add-to-card/add-to-card.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CollapseModule } from 'angular-bootstrap-md';
     TopbarComponent,
     FooterComponent,
     AllcategoryproductComponent,
-    ProductviewpageComponent
+    ProductviewpageComponent,
+    AddToCardComponent
   ],
   imports: [
     CommonModule,

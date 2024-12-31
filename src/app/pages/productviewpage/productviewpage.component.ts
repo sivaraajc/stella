@@ -58,11 +58,6 @@ export class ProductviewpageComponent implements OnInit {
     lens.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`;
   }
 
-  // nextView(productId: number): void {
-  //   console.log('Navigate to product:', productId);
-  // }
-
-
   productView() {
     const req = {
       "dataCode": "GET_PRODUCT_DETAILS_BY_PRODUCTID",

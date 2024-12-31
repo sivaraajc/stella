@@ -5,13 +5,15 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { AllcategoryproductComponent } from './allcategoryproduct/allcategoryproduct.component';
 import { ProductviewpageComponent } from './productviewpage/productviewpage.component';
+import { AddToCardComponent } from './add-to-card/add-to-card.component';
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
   { path: "topbar", component: TopbarComponent },
   { path: "footer", component: FooterComponent },
   { path: "allcatogery/:id", component: AllcategoryproductComponent },
-  { path: "productViewPage/:id", component: ProductviewpageComponent }
+  { path: "productViewPage/:id", component: ProductviewpageComponent },
+  { path: "addToCart/:id", component: AddToCardComponent }
 ];
 
 @NgModule({

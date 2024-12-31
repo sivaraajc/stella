@@ -12,11 +12,13 @@ export class TopbarComponent implements OnInit {
   isSearchVisible = false;
   profileImage: string = 'assets/dow.png';
   hideTopbarFlag: boolean;
+  cartCounts: any ;
 
   constructor(private router: Router, private getData: GetdataService) { }
 
   ngOnInit(): void {
     this.cateogryList();
+    this.cartCounts=localStorage.getItem('cartCount');
   }
 
 
@@ -64,5 +66,8 @@ export class TopbarComponent implements OnInit {
 
   authLogin() {
     this.router.navigate(['/auth/auth/']);
+  }
+  addToCart() {
+    this.router.navigate(['/addToCart/:id']);
   }
 }
