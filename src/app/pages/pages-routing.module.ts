@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: "footer", component: FooterComponent },
   { path: "allcatogery/:id", component: AllcategoryproductComponent },
   { path: "productViewPage/:id", component: ProductviewpageComponent },
-  { path: "addToCart/:id", component: AddToCardComponent }
+  { path: "addToCart", component: AddToCardComponent }
 ];
 
 @NgModule({

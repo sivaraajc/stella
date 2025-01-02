@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
@@ -20,7 +20,7 @@ import { AddToCardComponent } from './add-to-card/add-to-card.component';
     FooterComponent,
     AllcategoryproductComponent,
     ProductviewpageComponent,
-    AddToCardComponent
+    AddToCardComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +28,7 @@ import { AddToCardComponent } from './add-to-card/add-to-card.component';
     FormsModule,
     NgbCarouselModule,
     ReactiveFormsModule,
-    CollapseModule
+    CollapseModule,
   ]
 })
 export class PagesModule { }

@@ -116,3 +116,36 @@
     transform: scale(1.02);
   }
   
+
+  .description-wrapper {
+    position: relative;
+  }
+  
+  .description-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .description-input {
+    flex-grow: 1;
+    padding-right: 40px; /* Leave space for the button */
+  }
+  
+  .add-btn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+  }
+  

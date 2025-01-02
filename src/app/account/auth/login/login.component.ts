@@ -32,10 +32,18 @@ export class LoginComponent {
         email: this.registerForm.value.email,
         password: this.registerForm.value.password
       };
+      localStorage.setItem('email', req.email);
       this.loginser.register(req).subscribe((res: any) => {
         if (res.statusCode == 0) {
-          this.toster.showCustomPopup('success', 'Account Created Successfully');
-          this.router.navigate(['/admin/']);
+          localStorage.setItem('userId', res.responseContent.id);
+          if (res.responseContent.role == 'ROLE_ADMIN') {
+            this.toster.showCustomPopup("success", 'Login Successfully');
+            this.router.navigate(['/admin/']);
+          }
+          else if (res.responseContent.role == 'ROLE_USER') {
+            this.toster.showCustomPopup("success", 'Login Successfully');
+            this.router.navigate(['/']);
+          }
         } else {
           this.toster.showCustomPopup("error", res.errorMessage);
         }
@@ -55,8 +63,16 @@ export class LoginComponent {
       localStorage.setItem('email', req.email);
       this.loginser.login(req).subscribe((res: any) => {
         if (res.statusCode == 0) {
-          this.toster.showCustomPopup("success", 'Login Successfully');
-          this.router.navigate(['/admin/']);
+          console.log(res.responseContent);
+          localStorage.setItem('userId', res.responseContent.id);
+          if (res.responseContent.role == 'ROLE_ADMIN') {
+            this.toster.showCustomPopup("success", 'Login Successfully');
+            this.router.navigate(['/admin/']);
+          }
+          else if (res.responseContent.role == 'ROLE_USER') {
+            this.toster.showCustomPopup("success", 'Login Successfully');
+            this.router.navigate(['/']);
+          }
         }
         else {
           this.toster.showCustomPopup('error', 'Invalid email or password');

@@ -13,12 +13,15 @@ export class TopbarComponent implements OnInit {
   profileImage: string = 'assets/dow.png';
   hideTopbarFlag: boolean;
   cartCounts: any ;
-
+  userName: any;
+  accountIcon:boolean;
+  showLogoutDialog: boolean;
   constructor(private router: Router, private getData: GetdataService) { }
 
   ngOnInit(): void {
     this.cateogryList();
     this.cartCounts=localStorage.getItem('cartCount');
+    this.userName = localStorage.getItem('email');
   }
 
 
@@ -40,6 +43,26 @@ export class TopbarComponent implements OnInit {
     });
   }
 
+
+  get displayName(): string {
+    return this.userName.split('@')[0];
+  }
+
+  authLogout() {
+    this.showLogoutDialog = true;
+  }
+
+  confirmLogout() {
+    this.showLogoutDialog = false;
+    this.router.navigate(['/']);
+    localStorage.clear();
+    console.log('User logged out');
+    window.location.reload();
+  }
+
+  cancelLogout() {
+    this.showLogoutDialog = false;
+  }
 
 
   onLogin() {
@@ -67,7 +90,8 @@ export class TopbarComponent implements OnInit {
   authLogin() {
     this.router.navigate(['/auth/auth/']);
   }
+
   addToCart() {
-    this.router.navigate(['/addToCart/:id']);
+    this.router.navigate(['/addToCart']);
   }
 }

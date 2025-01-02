@@ -75,13 +75,13 @@ export class AdmindashboradComponent {
   }
 
   onLogout() {
-  localStorage.removeItem('email');
     this.showLogoutDialog = true;
   }
 
   confirmLogout() {
     this.showLogoutDialog = false;
     this.router.navigate(['/']);
+    localStorage.clear();
     console.log('User logged out');
   }
 

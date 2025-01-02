@@ -1,0 +1,45 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card img {
+    max-height: 150px;
+    max-width: 100%;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+  
+  .btn {
+    font-size: 0.85rem;
+  }
+  
+  .card p,
+  .card small {
+    font-size: 0.8rem;
+  }
+  
+  .text-muted {
+    color: #6c757d !important;
+  }
+  
+  input[type="text"] {
+    width: 50px;
+  }
+  

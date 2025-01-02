@@ -20,4 +20,10 @@ baseUrls=(environment as any).baseUrl;
     return this.http.get(url);
    }
 
+   //ADD TO CART
+   addToCard(req:any):Observable<any>{
+    const url=this.baseUrls+'/cart/add';
+    return this.http.post(url,req);
+   }
+
 }

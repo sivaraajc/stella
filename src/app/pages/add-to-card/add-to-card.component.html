@@ -1,0 +1,90 @@
+<div class="container my-4">
+    <h3 class="mb-4">Shopping Cart</h3>
+  
+    <!-- Display Product Details -->
+    <div class="card mb-3 border-0 shadow-sm" *ngIf="currentProduct">
+      <div class="card-body text-center">
+        <!-- Product Image -->
+        <div class="mb-3">
+          <img
+            [src]="currentProduct.product_image"
+            class="img-fluid rounded"
+            alt="Product Image"
+            style="max-height: 150px;"
+          />
+        </div>
+  
+        <!-- Product Details -->
+        <h5 class="card-title mb-2">{{ currentProduct.product_name }}</h5>
+        <p class="card-text text-muted mb-1">
+          {{ currentProduct.product_description }}
+        </p>
+        <p class="card-text">
+          <span class="text-success fw-bold">₹{{ currentProduct.product_price }}</span>
+          <small class="text-muted ms-2">
+            <del>₹{{ currentProduct.original_price }}</del>
+          </small>
+        </p>
+        <p class="text-muted mb-2">
+          Eligible for FREE delivery
+        </p>
+        <small class="text-muted d-block mb-3">Color: {{ currentProduct.color }}</small>
+  
+        <!-- Actions -->
+        <div class="d-flex justify-content-center align-items-center mb-3">
+          <button
+            class="btn btn-outline-secondary btn-sm"
+            (click)="decreaseQuantity(currentProduct)"
+          >
+            -
+          </button>
+          <input
+            type="text"
+            class="form-control text-center mx-2"
+            [value]="currentProduct.quantity"
+            style="width: 50px;"
+            readonly
+          />
+          <button
+            class="btn btn-outline-secondary btn-sm"
+            (click)="increaseQuantity(currentProduct)"
+          >
+            +
+          </button>Subtotal (3 items): ₹ NaN
+        </div>
+        <button
+          class="btn btn-danger btn-sm mb-3"
+          (click)="removeFromCart(currentProduct.id)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  
+    <!-- Navigation Buttons -->
+    <div class="d-flex justify-content-between mt-4">
+      <button
+        class="btn btn-outline-secondary"
+        (click)="showPreviousProduct()"
+        [disabled]="currentIndex === 0"
+      >
+        Previous
+      </button>
+      <button
+        class="btn btn-outline-secondary"
+        (click)="showNextProduct()"
+        [disabled]="currentIndex === cardResponseDetails.length - 1"
+      >
+        Next
+      </button>
+    </div>
+  
+    <!-- Cart Summary -->
+    <div class="mt-4 text-center">
+      <h5>Subtotal ({{ cardResponseDetails.length }} items): ₹
+        {{ calculateTotal() }}
+      </h5>
+      <button class="btn btn-primary mt-2" (click)="checkout()">Proceed to Buy</button>
+    </div>
+  </div>
+  
