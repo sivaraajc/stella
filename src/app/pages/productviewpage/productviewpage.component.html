@@ -23,7 +23,7 @@
     </ng-container> -->
   
     <ng-container *ngFor="let val of productResponse">
-      <div class="col-lg-6">
+      <div class="col-lg-6"> 
         <div class="main-image mb-4" style="position: relative;">
           <img
           [src]="val.product_image || 'https://via.placeholder.com/300'"
@@ -57,9 +57,9 @@
     </ng-container>
     
       <!-- Product Details Section -->
-      <div class="col-lg-6">
+      <div class="col-lg-6"  *ngFor="let val of productResponse">
         <div class="mb-4">
-          <button class="btn btn-primary w-100 py-3 mb-3">Add to Cart</button>
+          <button class="btn btn-primary w-100 py-3 mb-3"   (click)="addToCart(val.id, val.product_name, val.product_price, val.product_image)">Add to Cart</button>
           <button class="btn btn-outline-primary w-100 py-3">Buy with ShopPay</button>
         </div>
         <div class="quantity-section mb-4">

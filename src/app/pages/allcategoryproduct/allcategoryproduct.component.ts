@@ -54,23 +54,29 @@ export class AllcategoryproductComponent {
   addToCart(id: number, name: string, price: number, image: string): void {
     const product = { id, name, price, image };
     console.log('Adding product to cart:', product);
-    this.cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.cartCount = this.cart.length;
-    localStorage.setItem('cartCount', this.cartCount.toString());
-    const req = {
-      "itemCount": 1,
-      "productId": id,
-      "userId": localStorage.getItem('userId')
+
+    const userId = localStorage.getItem('userId');
+
+    if (!userId || userId.trim() === "") {
+      this.alert.showCustomPopup('error', "User login is required to add items to the cart.");
+    } else {
+      const req = {
+        "itemCount": 1,
+        "productId": id,
+        "userId": userId
+      };
+      this.getdata.addToCard(req).subscribe(res => {
+        if (res.statusCode == 0) {
+          this.alert.showCustomPopup('success', `${name} added to cart!`);
+          this.cart.push(product);
+          localStorage.setItem('cart', JSON.stringify(this.cart));
+          this.cartCount = this.cart.length;
+          localStorage.setItem('cartCount', this.cartCount.toString());
+        } else {
+          this.alert.showCustomPopup('error', res.errorMessage);
+        }
+      });
     }
-    this.getdata.addToCard(req).subscribe(res => {
-      if (res.statusCode == 0) {
-        this.alert.showCustomPopup('success', `${name} added to cart!`);
-      }
-      else {
-        this.alert.showCustomPopup('error',res.errorMessage);
-      }
-    })
   }
 
   productView(number: any): any {

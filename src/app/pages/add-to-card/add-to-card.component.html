@@ -1,90 +1,86 @@
-<div class="container my-4">
-    <h3 class="mb-4">Shopping Cart</h3>
-  
-    <!-- Display Product Details -->
-    <div class="card mb-3 border-0 shadow-sm" *ngIf="currentProduct">
-      <div class="card-body text-center">
-        <!-- Product Image -->
-        <div class="mb-3">
-          <img
-            [src]="currentProduct.product_image"
-            class="img-fluid rounded"
-            alt="Product Image"
-            style="max-height: 150px;"
-          />
+<div class="container my-5">
+  <h3 class="mb-4 text-center text-primary">Your Shopping Cart</h3>
+
+  <div class="row">
+    <!-- Cart Item List -->
+    <div class="col-lg-8">
+      <div *ngIf="cardResponseDetails.length > 0; else emptyCart">
+        <div class="list-group">
+          <!-- Loop through all the products in the cart -->
+          <div *ngFor="let product of cardResponseDetails" class="list-group-item d-flex justify-content-between align-items-center shadow-sm mb-4 rounded border">
+            <div class="d-flex align-items-center">
+              <!-- Product Image -->
+              <img
+                [src]="product.productImage"
+                class="img-fluid rounded"
+                alt="Product Image"
+                style="max-height: 120px; object-fit: cover; margin-right: 15px; border-radius: 8px;"
+              />
+              
+              <!-- Product Info -->
+              <div>
+                <h5 class="mb-1 text-truncate" style="max-width: 220px; font-size: 18px; font-weight: 600;">{{ product.productName }}</h5>
+                <p class="mb-0 text-muted text-truncate" style="max-width: 220px; font-size: 14px;">{{ product.productDescription }}</p>
+                <p class="mb-0 text-success fw-bold" style="font-size: 16px;">₹{{ product.productPrice }}</p>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <!-- Quantity Controls -->
+              <div class="mx-3">
+                <button class="btn btn-outline-secondary btn-sm" (click)="decreaseQuantity(product)">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <input
+                  type="text"
+                  class="form-control text-center d-inline-block mx-2"
+                  [value]="product.quantity"
+                  style="width: 45px; font-size: 14px; border-radius: 5px;"
+                  readonly
+                />
+                <button class="btn btn-outline-secondary btn-sm" (click)="increaseQuantity(product)">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+
+              <button class="btn btn-danger btn-sm" (click)="removeFromCart(product.cartId)">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
         </div>
-  
-        <!-- Product Details -->
-        <h5 class="card-title mb-2">{{ currentProduct.product_name }}</h5>
-        <p class="card-text text-muted mb-1">
-          {{ currentProduct.product_description }}
-        </p>
-        <p class="card-text">
-          <span class="text-success fw-bold">₹{{ currentProduct.product_price }}</span>
-          <small class="text-muted ms-2">
-            <del>₹{{ currentProduct.original_price }}</del>
-          </small>
-        </p>
-        <p class="text-muted mb-2">
-          Eligible for FREE delivery
-        </p>
-        <small class="text-muted d-block mb-3">Color: {{ currentProduct.color }}</small>
-  
-        <!-- Actions -->
-        <div class="d-flex justify-content-center align-items-center mb-3">
-          <button
-            class="btn btn-outline-secondary btn-sm"
-            (click)="decreaseQuantity(currentProduct)"
-          >
-            -
-          </button>
-          <input
-            type="text"
-            class="form-control text-center mx-2"
-            [value]="currentProduct.quantity"
-            style="width: 50px;"
-            readonly
-          />
-          <button
-            class="btn btn-outline-secondary btn-sm"
-            (click)="increaseQuantity(currentProduct)"
-          >
-            +
-          </button>Subtotal (3 items): ₹ NaN
+
+        <!-- Cart Summary -->
+        <div class="text-center mt-4">
+          <h5 class="text-dark" style="font-size: 20px;">Subtotal ({{ cardResponseDetails.length }} items): ₹{{ calculateTotal() }}</h5>
+          <button class="btn btn-primary mt-3 px-5 py-2" (click)="checkout()">Proceed to Checkout</button>
         </div>
-        <button
-          class="btn btn-danger btn-sm mb-3"
-          (click)="removeFromCart(currentProduct.id)"
-        >
-          Delete
-        </button>
       </div>
     </div>
-  
-    <!-- Navigation Buttons -->
-    <div class="d-flex justify-content-between mt-4">
-      <button
-        class="btn btn-outline-secondary"
-        (click)="showPreviousProduct()"
-        [disabled]="currentIndex === 0"
-      >
-        Previous
-      </button>
-      <button
-        class="btn btn-outline-secondary"
-        (click)="showNextProduct()"
-        [disabled]="currentIndex === cardResponseDetails.length - 1"
-      >
-        Next
-      </button>
-    </div>
-  
-    <!-- Cart Summary -->
-    <div class="mt-4 text-center">
-      <h5>Subtotal ({{ cardResponseDetails.length }} items): ₹
-        {{ calculateTotal() }}
-      </h5>
-      <button class="btn btn-primary mt-2" (click)="checkout()">Proceed to Buy</button>
+
+    <!-- Cart Summary Sidebar (Sticky) -->
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="sticky-top" style="top: 20px;">
+        <div class="card shadow-lg border-0 p-4 rounded">
+          <h5 class="text-center text-primary">Cart Summary</h5>
+          <hr />
+          <p class="text-muted">Items in cart: {{ cardResponseDetails.length }}</p>
+          <p class="fw-bold" style="font-size: 18px;">Subtotal: ₹{{ calculateTotal() }}</p>
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">Shipping: </span>
+            <span>Free</span>
+          </div>
+          <hr />
+          <button class="btn btn-primary w-100 py-2" (click)="checkout()">Proceed to Checkout</button>
+        </div>
+      </div>
     </div>
   </div>
-  
+
+  <!-- Empty Cart Message -->
+  <ng-template #emptyCart>
+    <div class="alert alert-info text-center py-4">
+      <strong>Your cart is empty!</strong> Add items to your cart to proceed.
+    </div>
+  </ng-template>
+</div>

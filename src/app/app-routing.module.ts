@@ -5,7 +5,7 @@ import { LoaderComponent } from './loader/loader.component';
 
 const routes: Routes = [
   { path: 'auth', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
-  { path: "", loadChildren: () => import("./pages/pages.module").then(mod => mod.PagesModule) },
+  { path: "", loadChildren: () => import("./pages/pages.module").then(mod => mod. PagesModule) },
   { path: "admin", loadChildren: () => import("./admin/admin.module").then(mod => mod.AdminModule) },
   { path: "", component: LoaderComponent },
   { path: "**", component: Page404Component }
