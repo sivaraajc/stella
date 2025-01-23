@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertService } from 'src/service/alert.service';
 import { GetdataService } from 'src/service/getdata.service';
 
@@ -12,7 +13,8 @@ export class AddToCardComponent implements OnInit {
   currentProduct: any; // Holds the product currently being displayed
   currentIndex: number = 0; // Tracks the index of the current product
 
-  constructor(private alert: AlertService, private getData: GetdataService) { }
+  constructor(private alert: AlertService, private getData: GetdataService,
+    private router: Router) { }
 
   ngOnInit() {
     this.addToCardDetails();
@@ -53,7 +55,7 @@ export class AddToCardComponent implements OnInit {
   decreaseQuantity(product: any) {
     if (product.quantity > 1) {
       product.quantity--;
-      this.updateQuantity(product); 
+      this.updateQuantity(product);
     }
   }
 
@@ -81,7 +83,7 @@ export class AddToCardComponent implements OnInit {
     this.getData.addToCardDelete(productId).subscribe((res: any) => {
       if (res.statusCode === 0) {
         this.alert.showCustomPopup('success', "Successfully removed from the cart");
-        this.addToCardDetails();
+        window.location.reload();
         console.log(res, 'Data fetched successfully');
       } else {
         console.log('Error fetching data');
@@ -98,6 +100,6 @@ export class AddToCardComponent implements OnInit {
 
   checkout() {
     console.log('Proceeding to checkout...');
-
+    this.router.navigate(['buy']);
   }
 }

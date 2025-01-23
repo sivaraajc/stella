@@ -1,0 +1,83 @@
+  <div class="container my-5">
+    <h3 class="mb-4 text-center text-primary">Checkout</h3>
+    <form [formGroup]="buyForm" (ngSubmit)="onSubmit()">
+      <!-- Pincode Field -->
+      <div class="form-group mb-3">
+        <label for="pincode">Pincode</label>
+        <input id="pincode" class="form-control" formControlName="pincode" placeholder="Enter your pincode"
+          (input)="onPincodeInput($event)" />
+        <div *ngIf="buyForm.get('pincode')?.hasError('required') && buyForm.get('pincode')?.touched">
+          <small class="text-danger">Pincode is required</small>
+        </div>
+      </div>
+
+      <!-- Taluk Select Dropdown -->
+      <div class="form-group mb-3">
+        <label for="talukSelect">Taluk</label>
+        <select id="talukSelect" class="form-control" formControlName="taluk" (change)="onTalukChange()">
+          <option value="">Select</option>
+          <option *ngFor="let taluk of uniqueTaluks" [value]="taluk">
+            {{ taluk }}
+          </option>
+        </select>
+        <div *ngIf="buyForm.get('taluk')?.hasError('required') && buyForm.get('taluk')?.touched">
+          <small class="text-danger">Taluk is required</small>
+        </div>
+      </div>
+
+      <!-- Village Select Dropdown -->
+      <div class="form-group mb-3">
+        <label for="VilageSelect">Village</label>
+        <select id="VilageSelect" class="form-control" formControlName="village">
+          <option value="">Select</option>
+          <option *ngFor="let taluk of filteredVillages" [value]="taluk">
+            {{ taluk }}
+          </option>
+        </select>
+        <div *ngIf="buyForm.get('village')?.hasError('required') && buyForm.get('village')?.touched">
+          <small class="text-danger">Village is required</small>
+        </div>
+      </div>
+
+      <!-- District Field -->
+      <div class="form-group mb-3">
+        <label for="district">District</label>
+        <input id="district" class="form-control" formControlName="district" placeholder="Enter your district" />
+        <div *ngIf="buyForm.get('district')?.hasError('required') && buyForm.get('district')?.touched">
+          <small class="text-danger">District is required</small>
+        </div>
+      </div>
+
+      <!-- State Field -->
+      <div class="form-group mb-3">
+        <label for="state">State</label>
+        <input id="state" class="form-control" formControlName="state" placeholder="Enter your state" />
+        <div *ngIf="buyForm.get('state')?.hasError('required') && buyForm.get('state')?.touched">
+          <small class="text-danger">State is required</small>
+        </div>
+      </div>
+
+      <!-- Latitude Field -->
+      <div class="form-group mb-3">
+        <label for="latitude">Mobile Number</label>
+        <input id="latitude" class="form-control" formControlName="latitude" placeholder="Enter Mobile Number" />
+        <div *ngIf="buyForm.get('latitude')?.hasError('required') && buyForm.get('latitude')?.touched">
+          <small class="text-danger">Mobile Number is required</small>
+        </div>
+      </div>
+
+      <!-- Longitude Field -->
+      <div class="form-group mb-3">
+        <label for="longitude">Longitude</label>
+        <input id="longitude" class="form-control" formControlName="longitude" placeholder="Enter longitude" />
+        <div *ngIf="buyForm.get('longitude')?.hasError('required') && buyForm.get('longitude')?.touched">
+          <small class="text-danger">Longitude is required</small>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary w-50" (click)="payment()">Conform Address</button>
+      </div>
+    </form>
+  </div>

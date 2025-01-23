@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AllcategoryproductComponent } from './allcategoryproduct/allcategoryproduct.component';
 import { ProductviewpageComponent } from './productviewpage/productviewpage.component';
 import { AddToCardComponent } from './add-to-card/add-to-card.component';
+import { BuyComponent } from './buy/buy.component';
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: "footer", component: FooterComponent },
   { path: "allcatogery/:id", component: AllcategoryproductComponent },
   { path: "productViewPage/:id", component: ProductviewpageComponent },
-  { path: "addToCart", component: AddToCardComponent }
+  { path: "addToCart", component: AddToCardComponent },
+  { path: 'buy', component: BuyComponent }
 ];
 
 @NgModule({
