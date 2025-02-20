@@ -99,7 +99,12 @@ export class AddToCardComponent implements OnInit {
   }
 
   checkout() {
-    console.log('Proceeding to checkout...');
-    this.router.navigate(['buy']);
+    const totalAmount = this.calculateTotal(); 
+    console.log('Proceeding to checkout with total:', totalAmount);
+  
+    this.router.navigate(['buy'], {
+      state: { total: totalAmount } 
+    });
   }
+  
 }

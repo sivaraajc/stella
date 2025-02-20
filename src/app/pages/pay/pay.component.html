@@ -1,0 +1,26 @@
+<div class="payment-container">
+    <h2>Payment Options</h2>
+  
+    <!-- Amount input -->
+    <label for="amount" class="label">Enter Amount:</label>
+    <input type="number" id="amount" [(ngModel)]="totalAmount" placeholder="Enter amount" class="input-box" readonly>
+  
+    <!-- Payment buttons -->
+    <div class="button-group">
+        <a [href]="gpayUrl" target="_blank" class="gpay-button">Pay with GPay</a>
+        <a [href]="paytmUrl" target="_blank" class="paytm-button">Pay with Paytm</a>
+      </div>
+      
+  
+    <!-- QR Code display -->
+    <div class="qr-container" *ngIf="qrCodeBase64">
+      <h3>Scan the QR Code</h3>
+      <div class="qr-box">
+        <img [src]="qrCodeBase64" alt="QR Code">
+      </div>
+    </div>
+  
+    <!-- Loading text -->
+    <p *ngIf="!qrCodeBase64" class="loading-text">Waiting for QR Code...</p>
+  </div>
+  

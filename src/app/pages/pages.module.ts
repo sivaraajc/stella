@@ -12,6 +12,7 @@ import { ProductviewpageComponent } from './productviewpage/productviewpage.comp
 import { CollapseModule } from 'angular-bootstrap-md';
 import { AddToCardComponent } from './add-to-card/add-to-card.component';
 import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { BuyComponent } from './buy/buy.component';
     ProductviewpageComponent,
     AddToCardComponent,
     BuyComponent,
+    PayComponent,
   ],
   imports: [
     CommonModule,

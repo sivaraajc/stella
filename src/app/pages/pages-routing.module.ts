@@ -7,6 +7,7 @@ import { AllcategoryproductComponent } from './allcategoryproduct/allcategorypro
 import { ProductviewpageComponent } from './productviewpage/productviewpage.component';
 import { AddToCardComponent } from './add-to-card/add-to-card.component';
 import { BuyComponent } from './buy/buy.component';
+import { PayComponent } from './pay/pay.component';
 
 const routes: Routes = [
   { path: "", component: DashboardComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: "allcatogery/:id", component: AllcategoryproductComponent },
   { path: "productViewPage/:id", component: ProductviewpageComponent },
   { path: "addToCart", component: AddToCardComponent },
-  { path: 'buy', component: BuyComponent }
+  { path: 'buy', component: BuyComponent },
+  {path:"pay",component:PayComponent}
 ];
 
 @NgModule({

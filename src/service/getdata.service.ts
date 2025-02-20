@@ -42,4 +42,10 @@ addToCartQuantityUpdate(req:any):Observable<any>{
 
 }
 
+paymentQrGenerate(amount: number): Observable<any> {
+  const url = `${this.baseUrls}/paymentqr/generateQRCode/${amount}`; 
+  return this.http.get(url);
+}
+
+
 }

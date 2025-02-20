@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/service/alert.service';
 import { GetdataService } from 'src/service/getdata.service';
 
 @Component({
@@ -9,26 +11,30 @@ import { GetdataService } from 'src/service/getdata.service';
 })
 export class BuyComponent implements OnInit {
   buyForm: FormGroup;
+  showPayButton = false; // Initially hidden
+  showConformButton=true;
   pincodeData: any[] = [];
   uniqueTaluks: string[] = [];
   filteredVillages: any[];
+  totalAmount: any;
 
-  constructor(private fb: FormBuilder, private getData: GetdataService) {
+  constructor(private fb: FormBuilder, private getData: GetdataService,private alert:AlertService,private router:Router) {
     this.buyForm = this.fb.group({
       pincode: ['', [Validators.required]],
       village: ['', Validators.required],
       taluk: ['', [Validators.required]],
       district: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      latitude: ['', [
-        Validators.required, 
-        Validators.pattern('^-?\\d*(\\.\\d+)?$') 
-      ]],
       longitude: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    if (history.state.total) {
+      this.totalAmount = history.state.total;
+    }
+    console.log('Total Amount received:', this.totalAmount);
+  }
 
   onPincodeInput(event: any): void {
     const value = event.target.value;
@@ -89,8 +95,20 @@ export class BuyComponent implements OnInit {
     }
   }
 
-  payment() {
-    this.buyForm.markAllAsTouched();
+ payment() {
+    if (this.buyForm.valid) {
+      console.log('Address Confirmed:', this.buyForm.value);
+      this.showPayButton = true; // Show Pay button
+      this.showConformButton=false;
+    } else {
+      console.log('Please fill all required fields.');
+      this.buyForm.markAllAsTouched(); // Show validation messages
+    }
   }
-
+  pay() {
+    this.alert.showCustomPopup("info",'Proceeding to payment...');
+    this.router.navigate(['pay'], {
+      state: { total: this.totalAmount } 
+    });
+  }
 }
