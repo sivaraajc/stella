@@ -138,3 +138,22 @@ label {
   color: #dc3545;
   font-size: 14px;
 }
+
+/* Styling for address cards with radio selection */
+.address-card {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+.address-card:hover {
+  background-color: #f8f9fa;
+  border-color: #007bff;
+}
+
+input[type="radio"]:checked + .card-body {
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  background-color: #e3f2fd;
+}

@@ -42,8 +42,18 @@ addToCartQuantityUpdate(req:any):Observable<any>{
 
 }
 
+addressAdd(req:any):Observable<any>{
+  const url = this.baseUrls + '/address/add';
+  return this.http.post(url,req);
+}
+
 paymentQrGenerate(amount: number): Observable<any> {
   const url = `${this.baseUrls}/paymentqr/generateQRCode/${amount}`; 
+  return this.http.get(url);
+}
+
+uniqueOrderId():Observable<any>{
+  const url = `${this.baseUrls}/paymentqr/generate/uuid`; 
   return this.http.get(url);
 }
 

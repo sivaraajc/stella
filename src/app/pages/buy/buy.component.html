@@ -1,88 +1,120 @@
 <div class="container my-5">
-  <h3 class="mb-4 text-center text-primary">Checkout</h3>
-  <form [formGroup]="buyForm" (ngSubmit)="onSubmit()">
-    <!-- Pincode Field -->
-    <div class="form-group mb-3">
-      <label for="pincode">Pincode</label>
-      <input id="pincode" class="form-control" formControlName="pincode" placeholder="Enter your pincode"
-        (input)="onPincodeInput($event)" />
-      <div *ngIf="buyForm.get('pincode')?.hasError('required') && buyForm.get('pincode')?.touched">
-        <small class="text-danger">Pincode is required</small>
+  <div class="row">
+    <!-- Left Side: Checkout Form -->
+    <div class="col-md-7">
+      <h3 class="mb-4 text-primary text-center">Checkout</h3>
+      <form [formGroup]="buyForm">
+        <!-- Pincode Field -->
+        <div class="form-group mb-3">
+          <label for="pincode">Pincode</label>
+          <input id="pincode" class="form-control" formControlName="pincode" placeholder="Enter your pincode" (input)="onPincodeInput($event)" />
+          <div *ngIf="buyForm.get('pincode')?.hasError('required') && buyForm.get('pincode')?.touched">
+            <small class="text-danger">Pincode is required</small>
+          </div>
+        </div>
+
+        <!-- Taluk Select Dropdown -->
+        <div class="form-group mb-3">
+          <label for="talukSelect">Taluk</label>
+          <select id="talukSelect" class="form-control" formControlName="taluk" (change)="onTalukChange()">
+            <option value="">Select</option>
+            <option *ngFor="let taluk of uniqueTaluks" [value]="taluk">
+              {{ taluk }}
+            </option>
+          </select>
+          <div *ngIf="buyForm.get('taluk')?.hasError('required') && buyForm.get('taluk')?.touched">
+            <small class="text-danger">Taluk is required</small>
+          </div>
+        </div>
+
+        <!-- Village Select Dropdown -->
+        <div class="form-group mb-3">
+          <label for="villageSelect">Village</label>
+          <select id="villageSelect" class="form-control" formControlName="village">
+            <option value="">Select</option>
+            <option *ngFor="let village of filteredVillages" [value]="village">
+              {{ village }}
+            </option>
+          </select>
+          <div *ngIf="buyForm.get('village')?.hasError('required') && buyForm.get('village')?.touched">
+            <small class="text-danger">Village is required</small>
+          </div>
+        </div>
+
+        <!-- District Field -->
+        <div class="form-group mb-3">
+          <label for="district">District</label>
+          <input id="district" class="form-control" formControlName="district" placeholder="Enter your district" />
+          <div *ngIf="buyForm.get('district')?.hasError('required') && buyForm.get('district')?.touched">
+            <small class="text-danger">District is required</small>
+          </div>
+        </div>
+
+        <!-- State Field -->
+        <div class="form-group mb-3">
+          <label for="state">State</label>
+          <input id="state" class="form-control" formControlName="state" placeholder="Enter your state" />
+          <div *ngIf="buyForm.get('state')?.hasError('required') && buyForm.get('state')?.touched">
+            <small class="text-danger">State is required</small>
+          </div>
+        </div>
+
+        <!-- Mobile Number Field -->
+        <div class="form-group mb-3">
+          <label for="mobile">Mobile Number</label>
+          <input id="mobile" class="form-control" formControlName="mobile" placeholder="Enter Mobile Number" />
+          <div *ngIf="buyForm.get('mobile')?.hasError('required') && buyForm.get('mobile')?.touched">
+            <small class="text-danger">Mobile Number is required</small>
+          </div>
+        </div>
+
+        <!-- Street Field -->
+        <div class="form-group mb-3">
+          <label for="addressLine1">Street</label>
+          <input id="addressLine1" class="form-control" formControlName="addressLine1" placeholder="Enter Address" />
+          <div *ngIf="buyForm.get('addressLine1')?.hasError('required') && buyForm.get('addressLine1')?.touched">
+            <small class="text-danger">Address is required</small>
+          </div>
+        </div>
+
+        <!-- Confirm Address Button -->
+        <div class="text-end">
+          <button type="button" class="btn btn-primary w-50" (click)="payment()" *ngIf="showConformButton">Confirm Address</button>
+        </div>
+
+        <!-- Pay Button -->
+        <div class="text-end mt-3">
+          <button type="button" class="btn btn-success w-50" (click)="pay()" *ngIf="showPayButton">Pay</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right Side: Display Address Details -->
+<div class="col-md-5">
+  <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="card-header bg-primary text-white text-center">
+      <h5 class="mb-0">Saved Addresses</h5>
+    </div>
+    <div class="card-body">
+      <div *ngIf="addressList?.length > 0">
+        <div *ngFor="let address of addressList; let i = index" class="mb-3">
+          <label class="card address-card border-primary w-100 p-2">
+            <input type="radio" name="savedAddress" [value]="address" (change)="selectAddress(address)" class="d-none">
+            <div class="card-body">
+              <h6 class="card-title text-primary"><i class="bi bi-geo-alt"></i> {{ address.village }}</h6>
+              <p class="card-text"><strong>Street:</strong> {{ address.address_line1 }}</p>
+              <p class="card-text"><strong>District:</strong> {{ address.district }}</p>
+              <p class="card-text"><strong>Village</strong> {{ address?.village }}</p>
+              <p class="card-text"><strong>Pincode:</strong> {{ address.pincode }}</p>
+              <p class="card-text"><strong>State:</strong> {{ address.state }}</p>
+              <p class="card-text"><strong>Mobile:</strong> {{ address.mobile }}</p>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div *ngIf="!addressList?.length" class="text-center">
+        <p class="text-danger">No Address Found</p>
       </div>
     </div>
-
-    <!-- Taluk Select Dropdown -->
-    <div class="form-group mb-3">
-      <label for="talukSelect">Taluk</label>
-      <select id="talukSelect" class="form-control" formControlName="taluk" (change)="onTalukChange()">
-        <option value="">Select</option>
-        <option *ngFor="let taluk of uniqueTaluks" [value]="taluk">
-          {{ taluk }}
-        </option>
-      </select>
-      <div *ngIf="buyForm.get('taluk')?.hasError('required') && buyForm.get('taluk')?.touched">
-        <small class="text-danger">Taluk is required</small>
-      </div>
-    </div>
-
-    <!-- Village Select Dropdown -->
-    <div class="form-group mb-3">
-      <label for="VilageSelect">Village</label>
-      <select id="VilageSelect" class="form-control" formControlName="village">
-        <option value="">Select</option>
-        <option *ngFor="let village of filteredVillages" [value]="village">
-          {{ village }}
-        </option>
-      </select>
-      <div *ngIf="buyForm.get('village')?.hasError('required') && buyForm.get('village')?.touched">
-        <small class="text-danger">Village is required</small>
-      </div>
-    </div>
-
-    <!-- District Field -->
-    <div class="form-group mb-3">
-      <label for="district">District</label>
-      <input id="district" class="form-control" formControlName="district" placeholder="Enter your district" />
-      <div *ngIf="buyForm.get('district')?.hasError('required') && buyForm.get('district')?.touched">
-        <small class="text-danger">District is required</small>
-      </div>
-    </div>
-
-    <!-- State Field -->
-    <div class="form-group mb-3">
-      <label for="state">State</label>
-      <input id="state" class="form-control" formControlName="state" placeholder="Enter your state" />
-      <div *ngIf="buyForm.get('state')?.hasError('required') && buyForm.get('state')?.touched">
-        <small class="text-danger">State is required</small>
-      </div>
-    </div>
-
-    <!-- Mobile Number Field -->
-    <div class="form-group mb-3">
-      <label for="mobile">Mobile Number</label>
-      <input id="mobile" class="form-control" formControlName="mobile" placeholder="Enter Mobile Number" />
-      <div *ngIf="buyForm.get('mobile')?.hasError('required') && buyForm.get('mobile')?.touched">
-        <small class="text-danger">Mobile Number is required</small>
-      </div>
-    </div>
-
-    <!-- Longitude Field -->
-    <div class="form-group mb-3">
-      <label for="longitude">Longitude</label>
-      <input id="longitude" class="form-control" formControlName="longitude" placeholder="Enter longitude" />
-      <div *ngIf="buyForm.get('longitude')?.hasError('required') && buyForm.get('longitude')?.touched">
-        <small class="text-danger">Longitude is required</small>
-      </div>
-    </div>
-
-    <!-- Submit Button (Confirm Address) -->
-    <div class="text-end">
-      <button type="button" class="btn btn-primary w-50" (click)="payment()" *ngIf="showConformButton">Confirm Address</button>
-    </div>
-
-    <!-- Pay Button (Visible Only After Confirm Address is Clicked) -->
-    <div class="text-end mt-3">
-      <button type="button" class="btn btn-success w-50" (click)="pay()" *ngIf="showPayButton">Pay</button>
-    </div>
-  </form>
+  </div>
 </div>

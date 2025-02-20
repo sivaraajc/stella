@@ -15,7 +15,8 @@ export class PayComponent implements OnInit {
   gpayUrl: string = '';
   paytmUrl: string = '';
   upiId: string = '8489017762@paytm';
-
+  utrNumber: any;
+  uniqueOrderId: any;
 
   constructor(private paymentService: GetdataService, private alert: AlertService) { }
 
@@ -24,8 +25,10 @@ export class PayComponent implements OnInit {
       this.totalAmount = history.state.total;
     }
     console.log('Total Amount received:', this.totalAmount);
+
     this.initCall();
     this.generatePaymentLinks();
+    this.uniquePaymentId();
   }
 
 
@@ -33,7 +36,6 @@ export class PayComponent implements OnInit {
     this.gpayUrl = `upi://pay?pa=${this.upiId}&pn=Merchant&mc=1234&tid=TXN123&tr=INV001&tn=Payment&am=${this.totalAmount}&cu=INR`;
     this.paytmUrl = `paytmmp://pay?pa=${this.upiId}&pn=Merchant&mc=1234&tid=TXN123&tr=INV001&tn=Payment&am=${this.totalAmount}&cu=INR`;
   }
-
   initCall() {
     this.paymentService.paymentQrGenerate(this.totalAmount).subscribe(
       (res) => {
@@ -52,4 +54,26 @@ export class PayComponent implements OnInit {
       }
     );
   }
+
+  uniquePaymentId() {
+    this.paymentService.uniqueOrderId().subscribe(res => {
+      if (res.statusCode == 0) {
+        this.uniqueOrderId = res.responseContent;
+      }
+      else {
+        console.log("Not Work");
+
+      }
+    })
+  }
+
+
+  onSubmit() {
+    const req = {
+      userId: localStorage.getItem('userId'),
+      amount: this.totalAmount,
+      orderId: this.uniqueOrderId
+    }
+  }
+
 }
