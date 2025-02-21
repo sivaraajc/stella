@@ -170,7 +170,7 @@ export class BuyComponent implements OnInit {
     this.buyForm.patchValue({
       addressLine1: address.address_line1,
       district: address.district,
-      pincode: address.pincode,
+      // pincode: address.pincode,
       state: address.state,
       mobile: address.mobile,
       taluk: matchedData ? matchedData.taluk : '', 
